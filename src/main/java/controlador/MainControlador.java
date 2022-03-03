@@ -59,7 +59,7 @@ public class MainControlador implements IControlador {
 					ProductoDAO.editProducto(s);
 					break;
 				case 4:
-					lee.print("Introduzca el nombre del producto que quiera modificar");
+					lee.print("Introduzca el nombre del producto que quiera buscar");
 					s=lee.String();
 					ProductoDAO.searchProducto(s);
 					break;
@@ -85,17 +85,17 @@ public class MainControlador implements IControlador {
 					newCliente();
 					break;
 				case 2:
-					lee.print("Introduzca el nombre del cliente a eliminar");
+					lee.print("Introduzca el dni del cliente a eliminar");
 					s=lee.String();
 					ClienteDAO.removeCliente(s);
 					break;
 				case 3:
-					lee.print("Introduzca el nombre del cliente que quiera modificar");
+					lee.print("Introduzca el dni del cliente que quiera modificar");
 					s=lee.String();
 					ClienteDAO.editCliente(s);
 					break;
 				case 4:
-					lee.print("Introduzca el nombre del cliente que quiera modificar");
+					lee.print("Introduzca el dni del cliente que quiera buscar");
 					s=lee.String();
 					ClienteDAO.searchCliente(s);
 					break;
@@ -121,22 +121,22 @@ public class MainControlador implements IControlador {
 					newReserva();
 					break;
 				case 2:
-					lee.print("Introduzca el nombre del producto a eliminar");
+					lee.print("Introduzca el id de la reserva a eliminar");
 					s=lee.String();
 					ReservaDAO.removeReserva(s);
 					break;
 				case 3:
-					lee.print("Introduzca el nombre del producto que quiera modificar");
+					lee.print("Introduzca el id de la reserva que quiera modificar");
 					s=lee.String();
 					ReservaDAO.editProducto(s);
 					break;
 				case 4:
-					lee.print("Introduzca el nombre del producto que quiera modificar");
+					lee.print("Introduzca el id de la reserva que quiera buscar");
 					s=lee.String();
-					ProductoDAO.searchProducto(s);
+					ReservaDAO.searchReserva(s);
 					break;
 				case 5:
-					ProductoDAO.showProducto();
+					ReservaDAO.showReserva();
 					break;
 					default:
 						lee.print("error");
@@ -164,29 +164,47 @@ public class MainControlador implements IControlador {
 		
 		lee.print("Introduzca el nombre del cliente");
 		String id=lee.String();
-		lee.print("Introduzca una descripcion del producto");
-		String des=lee.String();
-		lee.print("Introduzca el precio del producto");
-		float precio=lee.Float();
+		lee.print("Introduzca el dni del cliente");
+		String dni=lee.String();
+		lee.print("Introduzca la edad del cliente");
+		int edad=lee.Entero();
+		lee.print("¿va a ser cliente vip?\n 1 para vip\n 2 para cliente normal");
+		int eleccion=lee.Entero();
+		boolean vip=false;
+		while(eleccion==1 || eleccion==2) {
+			if(eleccion==1) {
+				vip=true;
+			}else if(eleccion==2) {
+				vip=false;
+			}else {
+				lee.print("eleccion no valida");
+			}
+		}
+		Cliente cliente=null;
+		Cliente=new Cliente(id,dni,edad,vip);
 		
-		Producto producto=null;
-		producto=new Producto(id,des,precio);
-		
-		return ProductoDAO.addProduct(producto);
+		return ClienteDAO.addCliente(cliente);
 	}
 	
 	private boolean newReserva() {
 		
-		lee.print("Introduzca el nombre del producto");
-		String id=lee.String();
-		lee.print("Introduzca una descripcion del producto");
-		String des=lee.String();
-		lee.print("Introduzca el precio del producto");
-		float precio=lee.Float();
+		lee.print("Introduzca la fecha de hoy de la reserva");
+		String fechaCreacion=lee.String();
+		lee.print("Introduzca la fecha prevista para devolver la pelicula");
+		String fechaPrevista=lee.String();
+		String fechaReal=fechaPrevista;
+		lee.print("Introduzca el estado del producto");
+		Estado;
+		lee.print("Introduzca la clave de la reserva");
+		String clave=lee.String();
+		Reserva reserva=null;
+		reserva=new reserva(fechaCreacion,fechaPrevista,fechaReal,estado,clave);
 		
-		Producto producto=null;
-		producto=new Producto(id,des,precio);
-		
-		return ProductoDAO.addProduct(producto);
+		return ReservaDAO.addReseva(reserva);
 	}
+	
+	/*
+	 * 	lee.print("Introduzca la fecha real de entrega");
+		String fechaReal=lee.Float();
+	 */
 }

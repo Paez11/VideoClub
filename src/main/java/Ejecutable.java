@@ -1,9 +1,10 @@
-import controlador.MainControlador;
+
+import controlador.Principal;
 
 public class Ejecutable {
 
 	public static void main(String[] args) {
-		(new MainControlador()).run();
+		(new Principal()).run();
 	}
 
 }

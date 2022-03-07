@@ -6,10 +6,10 @@ import model.Copia;
 
 public class CopiaDAO {
 	
-	private HashMap<String,Copia> CopiaDAO;
+	private HashMap <String,Copia> CopiaDAO;
 
 	public CopiaDAO() {
-		this.CopiaDAO = new HashMap<String,Copia>();
+		this.CopiaDAO = new HashMap <String,Copia>();
 	}
 	
 	public boolean addCopia(Copia c) {

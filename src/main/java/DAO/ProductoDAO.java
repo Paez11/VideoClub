@@ -16,18 +16,22 @@ public class ProductoDAO {
 
 	public boolean addProducto(Producto p) {
 		boolean result=false;
-		if(p!=null && !listaProductos.contains(p)) {
-			listaProductos.add(p);
-			result=true;
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(p!=null && !listaProductos.get(i).equals(p)) {
+				listaProductos.add(p);
+				result=true;
+			}
 		}
 		return result;
 	}
 	
 	public Producto deleteProducto(String nombre) {
-		Producto p = new Producto();
-		if(nombre!=null && listaProductos.contains(nombre)) {
-			p.setNombre(nombre);
-			listaProductos.remove(p);
+		Producto p = null;
+		for(int i=0; i<listaProductos.size();i++) {
+			if(listaProductos.get(i).getNombre().equals(nombre)) {
+				p=listaProductos.get(i);
+				listaProductos.remove(p);
+			}
 		}
 		return p;
 	}
@@ -37,12 +41,15 @@ public class ProductoDAO {
 		Producto p = new Producto();
 		String s=leeString();
 		double d=leeDouble();
-		if(nombre!=null && listaProductos.contains(nombre)) {
-			p.setNombre(nombre);
-			p.setNombre(s);
-			p.setDescripcion(s);
-			p.setPrecio(d);
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(nombre!=null) {
+				p=listaProductos.get(i);
+				p.setNombre(s);
+				p.setDescripcion(s);
+				p.setPrecio(d);
+			}
 		}
+		
 		return result;
 	}
 	
@@ -52,9 +59,11 @@ public class ProductoDAO {
 	
 	public Producto searchProducto(String name) {
 		Producto p=new Producto();
-		if(name!=null && listaProductos.contains(name)) {
-			p.setNombre(name);
-		}
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(name!=null) {
+				p=listaProductos.get(i);
+			}
+		}	
 		return p;
 	}
 }

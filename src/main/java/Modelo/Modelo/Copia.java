@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Copia {
+public class Copia implements ICopia{
 	private String Key;
 	private String Nombre;
 	

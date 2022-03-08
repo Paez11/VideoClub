@@ -24,9 +24,8 @@ public class ClienteDAO {
 	 * @param nombre del cliente a eliminar
 	 * @return el cliente eliminado
 	 */
-	private Cliente deleteCliente(String nombre) {
-		return clientes.remove(nombre);
-		
+	private Cliente deleteCliente(String key) {
+		return clientes.remove(key);
 	}
 	
 	
@@ -52,6 +51,11 @@ public class ClienteDAO {
 	}
 	public Cliente searchCliente(String nombre) {
 		return clientes.get(nombre);
+	}
+	public void showClientes2() {
+		for (HashMap.Entry<String,Integer> entry:hashmap.entrySet()) {
+			System.out.println("Clave: "+entry.getKey()+"\nValor: "+entry.getValue());
+		}
 	}
 	
 	

@@ -1,6 +1,7 @@
+package modelo;
+import java.io.Serializable;
 import java.util.Objects;
-
-public class Cliente implements ICliente {
+public class Cliente implements ICliente,Serializable{
 	private String nombre;
 	private String dni;
 	private int edad;

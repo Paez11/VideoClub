@@ -1,11 +1,27 @@
 package modelo;
 
+import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import interfaces.IProducto;
 
-public class Producto implements IProducto {
+@XmlRootElement(name="Producto")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Producto implements IProducto, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@XmlAttribute(name="Nombre")
 	private String Nombre;
+	@XmlAttribute
 	private String Descripcion;
+	@XmlAttribute
 	private double Precio;
 	
 	public Producto() {

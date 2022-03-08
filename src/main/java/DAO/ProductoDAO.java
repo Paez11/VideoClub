@@ -2,8 +2,14 @@ package DAO;
 
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import modelo.Producto;
 
+@XmlRootElement(name="ProductoDAO")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ProductoDAO {
 	
 	private ArrayList<Producto> listaProductos;

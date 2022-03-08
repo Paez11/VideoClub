@@ -56,7 +56,41 @@ public class vistas implements IVista{
 		System.out.println("2. Ver reserva");
 		System.out.println("3. Editar reserva");
 		System.out.println("4. Eliminar reserva");
-		System.out.println("0. Salir");
+		System.out.println("0. Salirg");
+	}
+	
+	public void menuEditarProducto() {
+		 System.out.println("           _   _   _                                          _               _         \r\n"
+		 		+ "  ___   __| | (_) | |_   __ _   _ _     _ __   _ _   ___   __| |  _  _   __  | |_   ___ \r\n"
+		 		+ " / -_) / _` | | | |  _| / _` | | '_|   | '_ \\ | '_| / _ \\ / _` | | || | / _| |  _| / _ \\\r\n"
+		 		+ " \\___| \\__,_| |_|  \\__| \\__,_| |_|     | .__/ |_|   \\___/ \\__,_|  \\_,_| \\__|  \\__| \\___/\r\n"
+		 		+ "                                       |_|                                              ");
+		 System.out.println("1. Nombre");
+		 System.out.println("2. Descripcion");
+		 System.out.println("3. Precio");
+	}
+	
+	public void menuEditarCliente() {
+		System.out.println("           _   _   _                         _   _                _         \r\n"
+				+ "  ___   __| | (_) | |_   __ _   _ _     __  | | (_)  ___   _ _   | |_   ___ \r\n"
+				+ " / -_) / _` | | | |  _| / _` | | '_|   / _| | | | | / -_) | ' \\  |  _| / -_)\r\n"
+				+ " \\___| \\__,_| |_|  \\__| \\__,_| |_|     \\__| |_| |_| \\___| |_||_|  \\__| \\___|\r\n"
+				+ "                                                                            ");
+		System.out.println("1. Nombre");
+		System.out.println("2. DNI");
+		System.out.println("3. Edad");
+	}
+	
+	public void menuEditarReserva() {
+		System.out.println("           _   _   _                                                            \r\n"
+				+ "  ___   __| | (_) | |_   __ _   _ _     _ _   ___   ___  ___   _ _  __ __  __ _ \r\n"
+				+ " / -_) / _` | | | |  _| / _` | | '_|   | '_| / -_) (_-< / -_) | '_| \\ V / / _` |\r\n"
+				+ " \\___| \\__,_| |_|  \\__| \\__,_| |_|     |_|   \\___| /__/ \\___| |_|    \\_/  \\__,_|\r\n"
+				+ "                                                                                ");
+		System.out.println("1. Fecha de creación");
+		System.out.println("2. Fecha Prevista");
+		System.out.println("3. Fecha real");
+		System.out.println("4. Estado");
 	}
 
 	

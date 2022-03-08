@@ -41,12 +41,14 @@ public class ProductoDAO {
 	}
 	
 	public void showProducto() {
-		
+		//Rafa tiene que ponerlo de vista
 	}
 	
 	public Producto searchProducto(String name) {
 		Producto p=new Producto();
-		
+		if(name!=null && listaProductos.contains(name)) {
+			p.setNombre(name);
+		}
 		return p;
 	}
 }

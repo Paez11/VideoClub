@@ -16,9 +16,8 @@ public class Editmenu {
 	
 	public static void Producto(String s) {
 		int opcion=-1;
-		
+		menu.menuEditarProducto();
 		do {
-			menu.menuEditarProducto();
 			switch(opcion) {
 				case 1:
 					
@@ -39,9 +38,8 @@ public class Editmenu {
 	
 	public static void Cliente(String s) {
 		int opcion=-1;
-		
+		menu.menuEditarCliente();
 		do {
-			menu.menuEditarCliente();
 			switch(opcion) {
 				case 1:
 					
@@ -65,9 +63,8 @@ public class Editmenu {
 	
 	public static void Reservas(String s) {
 		int opcion=-1;
-		
+		menu.menuEditarReserva();
 		do {
-			menu.menuEditarReserva();
 			switch(opcion) {
 				case 1:
 					

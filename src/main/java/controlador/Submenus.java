@@ -15,9 +15,8 @@ public class Submenus {
 		
 		int opcion=-1;
 		String s="";
-		
+		menu.showMenuProductos();
 		do {
-			menu.showMenuProductos();
 			switch(opcion) {
 				case 1:
 					Addmenu.newProducto();
@@ -40,7 +39,7 @@ public class Submenus {
 				case 5:
 					productos.showProducto();
 					break;
-					default:
+				default:
 						lee.Print("error");
 						break;
 			}
@@ -51,9 +50,8 @@ public class Submenus {
 		
 		int opcion=-1;
 		String s="";
-		
+		menu.showMenuClientes();
 		do {
-			menu.showMenuClientes();
 			switch(opcion) {
 				case 1:
 					Addmenu.newCliente();
@@ -87,9 +85,8 @@ public class Submenus {
 		
 		int opcion=-1;
 		String s="";
-		
+		menu.showMenuReservas();
 		do {
-			menu.showMenuReservas();
 			switch(opcion) {
 				case 1:
 					Addmenu.newReserva();

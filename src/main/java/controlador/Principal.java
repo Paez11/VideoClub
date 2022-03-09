@@ -13,7 +13,7 @@ public class Principal implements IControlador {
 			menu.showMenuPrincipal();
 			opcion=lee.Entero();
 			switchMenuPrincipal(opcion);
-		}while(opcion!=4);
+		}while(opcion!=0);
 		lee.Print("Adios");
 	}
 	
@@ -29,9 +29,9 @@ public class Principal implements IControlador {
 			case 3:
 				Submenus.switchMenuReservas();
 				break;
-				default:
-					lee.Print("Error");
-					break;
+			default:
+				lee.Print("Error");
+				break;
 				
 		}
 	}

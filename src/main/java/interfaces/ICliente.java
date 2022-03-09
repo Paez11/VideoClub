@@ -8,7 +8,7 @@ public interface ICliente {
 	void setNombre(String nombre);
 	void setDni(String dni);
 	void setEdad(int edad);
-	boolean setVip(boolean vip);
+	void setVip(boolean vip);
 	boolean equals(Object o);
 	String toString();
 }

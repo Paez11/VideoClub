@@ -1,6 +1,15 @@
 package controlador;
 
+import DAO.*;
+import utils.lee;
+import vistas.menu;
+
 public class Submenus {
+	
+	static ProductoDAO productos = new ProductoDAO();
+	static ClienteDAO clientes = new ClienteDAO();
+	static CopiaDAO copias = new CopiaDAO();
+	static ReservaDAO reservas = new ReservaDAO();
 	
  public static void switchMenuProductos() {
 		
@@ -8,32 +17,31 @@ public class Submenus {
 		String s="";
 		
 		do {
-			showMenuProductos();
+			menu.showMenuProductos();
 			switch(opcion) {
 				case 1:
 					Addmenu.newProducto();
 					break;
 				case 2:
-					lee.print("Introduzca el nombre del producto a eliminar");
+					lee.Print("Introduzca el nombre del producto a eliminar");
 					s=lee.String();
-					ProductoDAO.removeProducto(s);
+					productos.deleteProducto(s);
 					break;
 				case 3:
-					lee.print("Introduzca el nombre del producto que quiera modificar");
+					lee.Print("Introduzca el nombre del producto que quiera modificar");
 					s=lee.String();
-					switchMenuProductos();
-					ProductoDAO.editProducto(s);
+					Editmenu.Producto(s);
 					break;
 				case 4:
-					lee.print("Introduzca el nombre del producto que quiera buscar");
+					lee.Print("Introduzca el nombre del producto que quiera buscar");
 					s=lee.String();
-					ProductoDAO.searchProducto(s);
+					productos.searchProducto(s);
 					break;
 				case 5:
-					ProductoDAO.showProducto();
+					productos.showProducto();
 					break;
 					default:
-						lee.print("error");
+						lee.Print("error");
 						break;
 			}
 		}while(opcion!=6);
@@ -45,32 +53,31 @@ public class Submenus {
 		String s="";
 		
 		do {
-			showMenuClientes();
+			menu.showMenuClientes();
 			switch(opcion) {
 				case 1:
 					Addmenu.newCliente();
 					break;
 				case 2:
-					lee.print("Introduzca el dni del cliente a eliminar");
+					lee.Print("Introduzca el dni del cliente a eliminar");
 					s=lee.String();
-					ClienteDAO.removeCliente(s);
+					clientes.deleteCliente(s);
 					break;
 				case 3:
-					lee.print("Introduzca el dni del cliente que quiera modificar");
+					lee.Print("Introduzca el dni del cliente que quiera modificar");
 					s=lee.String();
-					switchEditCliente();
-					ClienteDAO.editCliente(s);
+					Editmenu.Cliente(s);
 					break;
 				case 4:
-					lee.print("Introduzca el dni del cliente que quiera buscar");
+					lee.Print("Introduzca el dni del cliente que quiera buscar");
 					s=lee.String();
-					ClienteDAO.searchCliente(s);
+					clientes.searchCliente(s);
 					break;
 				case 5:
-					ClienteDAO.showCliente();
+					clientes.showClientes();
 					break;
 					default:
-						lee.print("error");
+						lee.Print("error");
 						break;
 			}
 		}while(opcion!=6);
@@ -82,32 +89,31 @@ public class Submenus {
 		String s="";
 		
 		do {
-			showMenuReservas();
+			menu.showMenuReservas();
 			switch(opcion) {
 				case 1:
 					Addmenu.newReserva();
 					break;
 				case 2:
-					lee.print("Introduzca el id de la reserva a eliminar");
+					lee.Print("Introduzca el id de la reserva a eliminar");
 					s=lee.String();
-					ReservaDAO.removeReserva(s);
+					reservas.deleteReserva(s);
 					break;
 				case 3:
-					lee.print("Introduzca el id de la reserva que quiera modificar");
+					lee.Print("Introduzca el id de la reserva que quiera modificar");
 					s=lee.String();
-					switchEditReservas();
-					ReservaDAO.editProducto(s);
+					Editmenu.Reservas(s);
 					break;
 				case 4:
-					lee.print("Introduzca el id de la reserva que quiera buscar");
+					lee.Print("Introduzca el id de la reserva que quiera buscar");
 					s=lee.String();
-					ReservaDAO.searchReserva(s);
+					reservas.searchReserva(s);
 					break;
 				case 5:
-					ReservaDAO.showReserva();
+					reservas.showReserva();
 					break;
 					default:
-						lee.print("error");
+						lee.Print("error");
 						break;
 			}
 		}while(opcion!=6);

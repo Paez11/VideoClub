@@ -1,20 +1,23 @@
-import java.util.ArrayList;
+package DAO;
+
 import java.util.HashMap;
+import modelo.Cliente;
 
 public class ClienteDAO {
-	static HashMap<String,Cliente> clientes = new HashMap<String,Cliente>();
+	private HashMap<String,Cliente> clientes;
+	
 	public ClienteDAO() {
-		this.clientes = new HashMap<String,Cliente>();
+		clientes = new HashMap<String,Cliente>();
 	}
 	/**
 	 * Añadir un cliente
 	 * @param cliente
 	 * @return true si se ha añadido el cliente o false si no
 	 */
-	private boolean addCliente(Object cliente) {
+	public boolean addCliente(Cliente cliente) {
 		boolean result=false;
-		if(!this.clientes.containsKey(cliente.getDni())) {
-			this.clientes.put(cliente.getDni(), cliente);
+		if(!clientes.containsKey(cliente.getDni())) {
+			clientes.put(cliente.getDni(), cliente);
 			result=true;
 		}
 		return result;
@@ -24,14 +27,14 @@ public class ClienteDAO {
 	 * @param nombre del cliente a eliminar
 	 * @return el cliente eliminado
 	 */
-	private Cliente deleteCliente(String key) {
+	public Cliente deleteCliente(String key) {
 		return clientes.remove(key);
 	}
 	
 	
 	
 	// Edita todos los atributos del cliente, Nombre,Dni,Edad
-	private boolean editCliente(String key,Cliente nuevoNombre, Cliente antiguoNombre) {
+	public boolean editCliente(String key,Cliente nuevoNombre, Cliente antiguoNombre) {
 		boolean result=false;
 		if(this.clientes.containsKey(key)) {
 			this.clientes.replace(key, antiguoNombre, nuevoNombre);
@@ -42,21 +45,17 @@ public class ClienteDAO {
 	 * Lista de todos los clientes
 	 * @return la lista con los clientes
 	 */
-	private void showClientes() {
+	public void showClientes() {
 		String lista="|Lista de Clientes|";
 		for(String key:clientes.keySet()) {
 			lista="\nDni: "+key+"\tValor: "+clientes.get(key);
 		}
-		return;
 	}
+	
 	public Cliente searchCliente(String nombre) {
 		return clientes.get(nombre);
 	}
-	public void showClientes2() {
-		for (HashMap.Entry<String,Integer> entry:hashmap.entrySet()) {
-			System.out.println("Clave: "+entry.getKey()+"\nValor: "+entry.getValue());
-		}
-	}
+
 	
 	
 	

@@ -1,4 +1,4 @@
-package model;
+package modelo;
 
 import java.io.Serializable;
 
@@ -30,7 +30,7 @@ public class Reserva implements IReserva, Serializable{
 	
 	
 	
-	public Reserva(String fechaCreacion, String fechaPrevista, String fechaReal, model.estado estado, String key) {
+	public Reserva(String fechaCreacion, String fechaPrevista, String fechaReal, estado estado, String key) {
 		super();
 		this.fechaCreacion = fechaCreacion;
 		this.fechaPrevista = fechaPrevista;

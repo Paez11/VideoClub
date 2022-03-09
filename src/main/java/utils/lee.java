@@ -2,9 +2,9 @@ package utils;
 
 import java.util.Scanner;
 
-public class utils {
+public class lee {
 
-	public static int leeEntero() {
+	public static int Entero() {
 		int x=-1;
 		Scanner s=new Scanner(System.in);
 		boolean valid=true;
@@ -17,11 +17,11 @@ public class utils {
 				System.out.println("Error!!");
 				s.next();
 			}
-		} while (valid);
+		} while(valid);
 		return x;
 	}
 	
-	public static double leeDouble() {
+	public static double Double() {
 		double x=-1;
 		Scanner s=new Scanner(System.in);
 		boolean valid=true;
@@ -38,7 +38,7 @@ public class utils {
 		return x;
 	}
 	
-	public static String leeString() {
+	public static String String() {
 		String x="";
 		Scanner s=new Scanner(System.in);
 		boolean valid=true;
@@ -55,7 +55,7 @@ public class utils {
 		return x;
 	}
 	
-	public static void print(String f) {
+	public static void Print(String f) {
 		System.out.println(f);
 	}
 }

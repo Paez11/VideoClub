@@ -1,10 +1,8 @@
 package vistas;
 
-import interfaces.IVista;
+public class menu{
 
-public class vistas implements IVista{
-
-	public void showMenuPrincipal() {
+	public static void showMenuPrincipal() {
 		System.out.println(" __     __  _       _                   ____   _           _     \r\n"
 				+ " \\ \\   / / (_)   __| |   ___    ___    / ___| | |  _   _  | |__  \r\n"
 				+ "  \\ \\ / /  | |  / _` |  / _ \\  / _ \\  | |     | | | | | | | '_ \\ \r\n"
@@ -18,7 +16,7 @@ public class vistas implements IVista{
 		
 	}
 
-	public void showMenuProductos() {
+	public static void showMenuProductos() {
 
 		System.out.println("  ___                  _               _              \r\n"
 				+ " | _ \\  _ _   ___   __| |  _  _   __  | |_   ___   ___\r\n"
@@ -32,7 +30,7 @@ public class vistas implements IVista{
 		System.out.println("0. salir");
 	}
 
-	public void showMenuClientes() {
+	public static void showMenuClientes() {
 
 		System.out.println("   ___   _   _                _              \r\n"
 				+ "  / __| | | (_)  ___   _ _   | |_   ___   ___\r\n"
@@ -46,7 +44,7 @@ public class vistas implements IVista{
 		System.out.println("0. Salir");
 	}
 
-	public void showMenuReservas() {
+	public static void showMenuReservas() {
 
 		System.out.println("  ___                                          \r\n"
 				+ " | _ \\  ___   ___  ___   _ _  __ __  __ _   ___\r\n"
@@ -59,7 +57,7 @@ public class vistas implements IVista{
 		System.out.println("0. Salirg");
 	}
 	
-	public void menuEditarProducto() {
+	public static void menuEditarProducto() {
 		 System.out.println("           _   _   _                                          _               _         \r\n"
 		 		+ "  ___   __| | (_) | |_   __ _   _ _     _ __   _ _   ___   __| |  _  _   __  | |_   ___ \r\n"
 		 		+ " / -_) / _` | | | |  _| / _` | | '_|   | '_ \\ | '_| / _ \\ / _` | | || | / _| |  _| / _ \\\r\n"
@@ -70,7 +68,7 @@ public class vistas implements IVista{
 		 System.out.println("3. Precio");
 	}
 	
-	public void menuEditarCliente() {
+	public static void menuEditarCliente() {
 		System.out.println("           _   _   _                         _   _                _         \r\n"
 				+ "  ___   __| | (_) | |_   __ _   _ _     __  | | (_)  ___   _ _   | |_   ___ \r\n"
 				+ " / -_) / _` | | | |  _| / _` | | '_|   / _| | | | | / -_) | ' \\  |  _| / -_)\r\n"
@@ -81,7 +79,7 @@ public class vistas implements IVista{
 		System.out.println("3. Edad");
 	}
 	
-	public void menuEditarReserva() {
+	public static void menuEditarReserva() {
 		System.out.println("           _   _   _                                                            \r\n"
 				+ "  ___   __| | (_) | |_   __ _   _ _     _ _   ___   ___  ___   _ _  __ __  __ _ \r\n"
 				+ " / -_) / _` | | | |  _| / _` | | '_|   | '_| / -_) (_-< / -_) | '_| \\ V / / _` |\r\n"
@@ -92,6 +90,12 @@ public class vistas implements IVista{
 		System.out.println("3. Fecha real");
 		System.out.println("4. Estado");
 	}
-
 	
+	public static void estados() {
+		System.out.println("1. bien");
+		System.out.println("2. roto");
+		System.out.println("3. sin carcasa");
+		System.out.println("4. sucio");
+		System.out.println("5. rallado");
+	}	
 }

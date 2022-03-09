@@ -1,4 +1,4 @@
-package reservaDAO;
+package DAO;
 
 import java.util.HashMap;
 
@@ -8,11 +8,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import interfaces.ICliente;
 import interfaces.IReserva;
-import model.Reserva;
+import modelo.Reserva;
 //martes 15 10:30
 @XmlRootElement(name="Reservas")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class reservaDAO {
+public class ReservaDAO {
 
 	private HashMap<String, Reserva> alm;
 	
@@ -25,10 +25,10 @@ public class reservaDAO {
 		return valid;
 	}
 	
-	public ICliente deleteReserva(String key) {
-		ICliente p=null;
+	public Reserva deleteReserva(String key) {
+		Reserva p=null;
 		if(this.alm.containsKey(key)) {
-			p=(ICliente) this.alm.remove(key);
+			p=(Reserva) this.alm.remove(key);
 		}
 		return p;
 	}

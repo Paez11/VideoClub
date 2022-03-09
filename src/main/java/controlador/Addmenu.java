@@ -1,33 +1,40 @@
 package controlador;
+import DAO.*;
 import modelo.*;
-import modeloDAO.*;
+import utils.lee;
+import vistas.menu;
 
 public class Addmenu {
 	
+	static ProductoDAO productos = new ProductoDAO();
+	static ClienteDAO clientes = new ClienteDAO();
+	static CopiaDAO copias = new CopiaDAO();
+	static ReservaDAO reservas = new ReservaDAO();
+	
 	public static boolean newProducto() {
 			
-			lee.print("Introduzca el nombre del producto");
+			lee.Print("Introduzca el nombre del producto");
 			String id=lee.String();
-			lee.print("Introduzca una descripcion del producto");
+			lee.Print("Introduzca una descripcion del producto");
 			String des=lee.String();
-			lee.print("Introduzca el precio del producto");
-			float precio=lee.Float();
+			lee.Print("Introduzca el precio del producto");
+			float precio=(float) lee.Double();
 			
 			Producto producto=null;
 			producto=new Producto(id,des,precio);
 			
-			return ProductoDAO.addProduct(producto);
+			return productos.addProducto(producto);
 		}
 	
 	public static boolean newCliente() {
 		
-		lee.print("Introduzca el nombre del cliente");
+		lee.Print("Introduzca el nombre del cliente");
 		String id=lee.String();
-		lee.print("Introduzca el dni del cliente");
+		lee.Print("Introduzca el dni del cliente");
 		String dni=lee.String();
-		lee.print("Introduzca la edad del cliente");
+		lee.Print("Introduzca la edad del cliente");
 		int edad=lee.Entero();
-		lee.print("¿va a ser cliente vip?\n 1 para vip\n 2 para cliente normal");
+		lee.Print("¿va a ser cliente vip?\n 1 para vip\n 2 para cliente normal");
 		int eleccion=lee.Entero();
 		boolean vip=false;
 		while(eleccion==1 || eleccion==2) {
@@ -36,30 +43,54 @@ public class Addmenu {
 			}else if(eleccion==2) {
 				vip=false;
 			}else {
-				lee.print("eleccion no valida");
+				lee.Print("eleccion no valida");
 			}
 		}
 		Cliente cliente=null;
-		Cliente=new Cliente(id,dni,edad,vip);
+		cliente=new Cliente(id,dni,edad,vip);
 		
-		return ClienteDAO.addCliente(cliente);
+		return clientes.addCliente(cliente);
 	}
 	
 	public static boolean newReserva() {
 		
-		lee.print("Introduzca la fecha de hoy de la reserva");
+		lee.Print("Introduzca la fecha de hoy de la reserva");
 		String fechaCreacion=lee.String();
-		lee.print("Introduzca la fecha prevista para devolver la pelicula");
+		lee.Print("Introduzca la fecha prevista para devolver la pelicula");
 		String fechaPrevista=lee.String();
 		String fechaReal=fechaPrevista;
-		lee.print("Introduzca el estado del producto");
-		Estado;
-		lee.print("Introduzca la clave de la reserva");
+		lee.Print("Introduzca el estado del producto");
+		estado estado = null;
+		int opcion=-1;
+		do {
+			menu.estados();
+			switch(opcion) {
+				case 1:
+					estado=modelo.estado.BIEN;
+					break;
+				case 2:
+					estado=modelo.estado.ROTO;
+					break;
+				case 3:
+					estado=modelo.estado.SIN_CARCASA;
+					break;
+				case 4:
+					estado=modelo.estado.SUCIO;
+					break;
+				case 5:
+					estado=modelo.estado.RAYADO;
+					break;
+					default:
+						lee.Print("error");
+						break;
+			}
+		}while(opcion!=4);
+		lee.Print("Introduzca la clave de la reserva");
 		String clave=lee.String();
 		Reserva reserva=null;
-		reserva=new reserva(fechaCreacion,fechaPrevista,fechaReal,estado,clave);
+		reserva=new Reserva(fechaCreacion,fechaPrevista,fechaReal,estado,clave);
 		
-		return ReservaDAO.addReseva(reserva);
+		return reservas.addReserva(reserva);
 	}
 	
 	/*

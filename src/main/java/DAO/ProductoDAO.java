@@ -36,11 +36,9 @@ public class ProductoDAO {
 		return p;
 	}
 	
-	public boolean editProducto(String nombre) {
+	public boolean editProducto(String nombre, String s, double d) {
 		boolean result=false;
 		Producto p = new Producto();
-		String s=leeString();
-		double d=leeDouble();
 		for(int i=0; i<listaProductos.size(); i++) {
 			if(nombre!=null) {
 				p=listaProductos.get(i);

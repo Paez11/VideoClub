@@ -1,6 +1,6 @@
 package interfaces;
 
-import model.estado;
+import modelo.estado;
 
 public interface IReserva {
 	String getFechaCreacion();

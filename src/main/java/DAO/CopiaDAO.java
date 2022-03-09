@@ -2,7 +2,7 @@ package DAO;
 
 import java.util.HashMap;
 
-import model.Copia;
+import modelo.Copia;
 
 public class CopiaDAO {
 	
@@ -30,9 +30,10 @@ public class CopiaDAO {
 	}
 	
 	public boolean editarCopia(String key, Copia nuevaCopia) {
-		boolean result=null;
+		boolean result=false;
 		if(!this.CopiaDAO.containsKey(key)) {
 			this.CopiaDAO.put(key,nuevaCopia);
+			result=true;
 		}
 		return result;
 	}
@@ -43,8 +44,14 @@ public class CopiaDAO {
 		
 	}
 	
-	public Copia searchCopia(String Copia) {
-		Copia c=new Copia();
+	public Copia searchCopia(String id) {
+		Copia c=null;
+		
+		for (String e: CopiaDAO.keySet()) {
+			if(CopiaDAO.containsKey(id)) {
+				c=CopiaDAO.get(e);
+			}
+		}
 		
 		return c;
 	}

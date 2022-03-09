@@ -1,14 +1,20 @@
 package modelo;
 import java.io.Serializable;
-import java.util.Objects;
+import interfaces.ICliente;
+
+
 public class Cliente implements ICliente,Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String dni;
 	private int edad;
 	private boolean vip;
 	
 	public Cliente() {
-		super();
+		
 	}
 
 	public Cliente(String nombre, String dni, int edad, boolean vip) {

@@ -1,4 +1,5 @@
-package Modelo;
+package modelo;
+import interfaces.ICopia;
 
 public class Copia implements ICopia{
 	private String Key;

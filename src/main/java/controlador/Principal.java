@@ -1,8 +1,8 @@
 package controlador;
 
-import Utils.Read;
 import interfaces.IControlador;
-import view.Print;
+import utils.lee;
+import vistas.menu;
 
 public class Principal implements IControlador {
 
@@ -10,8 +10,8 @@ public class Principal implements IControlador {
 	public void run() {
 		int opcion=-1;
 		do {
-			showMenuPrincipal();
-			opcion=leeEntero();
+			menu.showMenuPrincipal();
+			opcion=lee.Entero();
 			switchMenuPrincipal(opcion);
 		}while(opcion!=4);
 		lee.Print("Adios");
@@ -30,7 +30,7 @@ public class Principal implements IControlador {
 				Submenus.switchMenuReservas();
 				break;
 				default:
-					lee.print("Error");
+					lee.Print("Error");
 					break;
 				
 		}

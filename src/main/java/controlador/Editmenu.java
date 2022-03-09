@@ -1,11 +1,24 @@
 package controlador;
 
+import DAO.ClienteDAO;
+import DAO.CopiaDAO;
+import DAO.ProductoDAO;
+import DAO.ReservaDAO;
+import utils.lee;
+import vistas.menu;
+
 public class Editmenu {
-	private void switchEditProducto() {
+	
+	static ProductoDAO productos = new ProductoDAO();
+	static ClienteDAO clientes = new ClienteDAO();
+	static CopiaDAO copias = new CopiaDAO();
+	static ReservaDAO reservas = new ReservaDAO();
+	
+	public static void Producto(String s) {
 		int opcion=-1;
 		
 		do {
-			showMenuEditProducto();
+			menu.menuEditarProducto();
 			switch(opcion) {
 				case 1:
 					
@@ -18,17 +31,17 @@ public class Editmenu {
 					break;
 
 					default:
-						lee.print("error");
+						lee.Print("error");
 						break;
 			}
 		}while(opcion!=4);
 	}
 	
-	private void switchEditCliente() {
+	public static void Cliente(String s) {
 		int opcion=-1;
 		
 		do {
-			showMenuEditCliente();
+			menu.menuEditarCliente();
 			switch(opcion) {
 				case 1:
 					
@@ -44,17 +57,17 @@ public class Editmenu {
 					break;
 					
 					default:
-						lee.print("error");
+						lee.Print("error");
 						break;
 			}
 		}while(opcion!=5);
 	}
 	
-	private void switchEditReservas() {
+	public static void Reservas(String s) {
 		int opcion=-1;
 		
 		do {
-			showMenuEditReservas();
+			menu.menuEditarReserva();
 			switch(opcion) {
 				case 1:
 					
@@ -73,7 +86,7 @@ public class Editmenu {
 					break;
 					
 					default:
-						lee.print("error");
+						lee.Print("error");
 						break;
 			}
 		}while(opcion!=6);

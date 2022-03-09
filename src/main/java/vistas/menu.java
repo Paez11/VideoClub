@@ -27,7 +27,7 @@ public class menu{
 		System.out.println("2. Ver producto");
 		System.out.println("3. Editar producto");
 		System.out.println("4. Eliminar producto");
-		System.out.println("0. salir");
+		System.out.println("0. Volver");
 	}
 
 	public static void showMenuClientes() {
@@ -41,7 +41,7 @@ public class menu{
 		System.out.println("2. Ver cliente");
 		System.out.println("3. Editar cliente");
 		System.out.println("4. Eliminar cliente");
-		System.out.println("0. Salir");
+		System.out.println("0. Volver");
 	}
 
 	public static void showMenuReservas() {
@@ -54,7 +54,7 @@ public class menu{
 		System.out.println("2. Ver reserva");
 		System.out.println("3. Editar reserva");
 		System.out.println("4. Eliminar reserva");
-		System.out.println("0. Salirg");
+		System.out.println("0. Volver");
 	}
 	
 	public static void menuEditarProducto() {
@@ -66,6 +66,7 @@ public class menu{
 		 System.out.println("1. Nombre");
 		 System.out.println("2. Descripcion");
 		 System.out.println("3. Precio");
+		 System.out.println("0. Volver");
 	}
 	
 	public static void menuEditarCliente() {
@@ -77,6 +78,7 @@ public class menu{
 		System.out.println("1. Nombre");
 		System.out.println("2. DNI");
 		System.out.println("3. Edad");
+		System.out.println("0. Volver");
 	}
 	
 	public static void menuEditarReserva() {
@@ -89,6 +91,7 @@ public class menu{
 		System.out.println("2. Fecha Prevista");
 		System.out.println("3. Fecha real");
 		System.out.println("4. Estado");
+		System.out.println("0. Volver");
 	}
 	
 	public static void estados() {

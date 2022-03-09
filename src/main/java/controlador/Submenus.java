@@ -11,12 +11,15 @@ public class Submenus {
 	static CopiaDAO copias = new CopiaDAO();
 	static ReservaDAO reservas = new ReservaDAO();
 	
- public static void switchMenuProductos() {
+ public static void menuProductos() {
 		
 		int opcion=-1;
 		String s="";
-		menu.showMenuProductos();
+		
 		do {
+			menu.showMenuProductos();
+			opcion=lee.Entero();
+			
 			switch(opcion) {
 				case 1:
 					Addmenu.newProducto();
@@ -39,19 +42,25 @@ public class Submenus {
 				case 5:
 					productos.showProducto();
 					break;
+				case 0:
+					break;
 				default:
 						lee.Print("error");
 						break;
 			}
-		}while(opcion!=6);
+		}while(opcion!=0);
 	}
 	
-	public static void switchMenuClientes() {
+	public static void menuClientes() {
 		
 		int opcion=-1;
 		String s="";
-		menu.showMenuClientes();
+		
 		do {
+			
+			menu.showMenuClientes();
+			opcion=lee.Entero();
+			
 			switch(opcion) {
 				case 1:
 					Addmenu.newCliente();
@@ -59,7 +68,11 @@ public class Submenus {
 				case 2:
 					lee.Print("Introduzca el dni del cliente a eliminar");
 					s=lee.String();
+					try {
 					clientes.deleteCliente(s);
+					}catch(Exception e) {
+						lee.Print("No se ha podido elimar al cliente o no existe");
+					}
 					break;
 				case 3:
 					lee.Print("Introduzca el dni del cliente que quiera modificar");
@@ -74,19 +87,25 @@ public class Submenus {
 				case 5:
 					clientes.showClientes();
 					break;
+				case 0:
+					break;
 					default:
 						lee.Print("error");
 						break;
 			}
-		}while(opcion!=6);
+		}while(opcion!=0);
 	}
 	
-	public static void switchMenuReservas() {
+	public static void menuReservas() {
 		
 		int opcion=-1;
 		String s="";
-		menu.showMenuReservas();
+		
 		do {
+			
+			menu.showMenuReservas();
+			opcion=lee.Entero();
+			
 			switch(opcion) {
 				case 1:
 					Addmenu.newReserva();
@@ -109,10 +128,12 @@ public class Submenus {
 				case 5:
 					reservas.showReserva();
 					break;
+				case 0:
+					break;
 					default:
 						lee.Print("error");
 						break;
 			}
-		}while(opcion!=6);
+		}while(opcion!=0);
 	}
 }

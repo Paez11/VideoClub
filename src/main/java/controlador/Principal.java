@@ -21,13 +21,15 @@ public class Principal implements IControlador {
 		
 		switch(opcion) {
 			case 1:
-				Submenus.switchMenuProductos();
+				Submenus.menuProductos();
 				break;
 			case 2:
-				Submenus.switchMenuClientes();
+				Submenus.menuClientes();
 				break;
 			case 3:
-				Submenus.switchMenuReservas();
+				Submenus.menuReservas();
+				break;
+			case 0:
 				break;
 			default:
 				lee.Print("Error");

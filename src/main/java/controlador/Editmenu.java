@@ -16,11 +16,15 @@ public class Editmenu {
 	
 	public static void Producto(String s) {
 		int opcion=-1;
-		menu.menuEditarProducto();
+		
 		do {
+			
+			menu.menuEditarProducto();
+			opcion=lee.Entero();
+			
 			switch(opcion) {
 				case 1:
-					
+					productos.editProducto(s, s, opcion);
 					break;
 				case 2:
 
@@ -28,21 +32,26 @@ public class Editmenu {
 				case 3:
 
 					break;
-
+				case 0:
+					break;
 					default:
 						lee.Print("error");
 						break;
 			}
-		}while(opcion!=4);
+		}while(opcion!=0);
 	}
 	
 	public static void Cliente(String s) {
 		int opcion=-1;
-		menu.menuEditarCliente();
+		
 		do {
+			
+			menu.menuEditarCliente();
+			opcion=lee.Entero();
+			
 			switch(opcion) {
 				case 1:
-					
+					clientes.editCliente(s, null, null);
 					break;
 				case 2:
 
@@ -53,21 +62,26 @@ public class Editmenu {
 				case 4:
 
 					break;
-					
+				case 0:
+					break;
 					default:
 						lee.Print("error");
 						break;
 			}
-		}while(opcion!=5);
+		}while(opcion!=0);
 	}
 	
 	public static void Reservas(String s) {
 		int opcion=-1;
-		menu.menuEditarReserva();
+		
 		do {
+			
+			menu.menuEditarReserva();
+			opcion=lee.Entero();
+			
 			switch(opcion) {
 				case 1:
-					
+					reservas.editReserva(s);
 					break;
 				case 2:
 
@@ -81,11 +95,12 @@ public class Editmenu {
 				case 5:
 
 					break;
-					
+				case 0:
+					break;
 					default:
 						lee.Print("error");
 						break;
 			}
-		}while(opcion!=6);
+		}while(opcion!=0);
 	}
 }

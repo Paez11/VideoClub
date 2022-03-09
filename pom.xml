@@ -3,9 +3,13 @@
   <groupId>es.franciscodelosrios</groupId>
   <artifactId>VideoClub</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+<<<<<<< HEAD
   
 <<<<<<< HEAD
     <dependencies>
+=======
+<dependencies>
+>>>>>>> bdec308df07107a008b96a552c503f601f5791fd
 <dependency>
  <groupId>com.sun.xml.bind</groupId>
  <artifactId>jaxb-core</artifactId>
@@ -22,6 +26,7 @@
  <version>2.3.1</version>
 </dependency>
 </dependencies>
+<<<<<<< HEAD
 =======
  	<dependencies>
 		<dependency>
@@ -43,4 +48,6 @@
 
 >>>>>>> 5f9150e25c3394b737fb105995ab65f116b411cb
 
+=======
+>>>>>>> bdec308df07107a008b96a552c503f601f5791fd
 </project>

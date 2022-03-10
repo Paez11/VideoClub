@@ -9,12 +9,8 @@ import vistas.menu;
 
 public class Editmenu {
 	
-	static ProductoDAO productos = new ProductoDAO();
-	static ClienteDAO clientes = new ClienteDAO();
-	static CopiaDAO copias = new CopiaDAO();
-	static ReservaDAO reservas = new ReservaDAO();
 	
-	public static void Producto(String s) {
+	public static void Producto(String s, ProductoDAO productos) {
 		int opcion=-1;
 		
 		do {
@@ -41,7 +37,7 @@ public class Editmenu {
 		}while(opcion!=0);
 	}
 	
-	public static void Cliente(String s) {
+	public static void Cliente(String s, ClienteDAO clientes) {
 		int opcion=-1;
 		
 		do {
@@ -71,7 +67,7 @@ public class Editmenu {
 		}while(opcion!=0);
 	}
 	
-	public static void Reservas(String s) {
+	public static void Reservas(String s, ReservaDAO reservas) {
 		int opcion=-1;
 		
 		do {

@@ -1,12 +1,16 @@
 package modelo;
 import interfaces.ICopia;
 
-public class Copia implements ICopia{
+public class Copia  extends Producto implements ICopia{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String Key;
 	private String Nombre;
 	
 	public Copia(String key, String nombre) {
-		
+		super();
 		Key = key;
 		Nombre = nombre;
 	}

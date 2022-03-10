@@ -6,12 +6,8 @@ import vistas.menu;
 
 public class Addmenu {
 	
-	static ProductoDAO productos = new ProductoDAO();
-	static ClienteDAO clientes = new ClienteDAO();
-	static CopiaDAO copias = new CopiaDAO();
-	static ReservaDAO reservas = new ReservaDAO();
 	
-	public static boolean newProducto() {
+	public static boolean newProducto(ProductoDAO productos) {
 			
 			lee.Print("Introduzca el nombre del producto");
 			String id=lee.String();
@@ -30,7 +26,7 @@ public class Addmenu {
 			return productos.addProducto(producto);
 		}
 	
-	public static boolean newCliente() {
+	public static boolean newCliente(ClienteDAO clientes) {
 		
 		lee.Print("Introduzca el nombre del cliente");
 		String id=lee.String();
@@ -60,7 +56,7 @@ public class Addmenu {
 		return clientes.addCliente(cliente);
 	}
 	
-	public static boolean newReserva() {
+	public static boolean newReserva(ReservaDAO reservas) {
 		
 		lee.Print("Introduzca la fecha de hoy de la reserva");
 		String fechaCreacion=lee.String();

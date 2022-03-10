@@ -6,12 +6,8 @@ import vistas.menu;
 
 public class Submenus {
 	
-	static ProductoDAO productos = new ProductoDAO();
-	static ClienteDAO clientes = new ClienteDAO();
-	static CopiaDAO copias = new CopiaDAO();
-	static ReservaDAO reservas = new ReservaDAO();
 	
- public static void menuProductos() {
+ public static void menuProductos(ProductoDAO productos) {
 		
 		int opcion=-1;
 		String s="";
@@ -22,7 +18,7 @@ public class Submenus {
 			
 			switch(opcion) {
 				case 1:
-					Addmenu.newProducto();
+					Addmenu.newProducto(productos);
 					break;
 				case 2:
 					lee.Print("Introduzca el nombre del producto a eliminar");
@@ -32,7 +28,7 @@ public class Submenus {
 				case 3:
 					lee.Print("Introduzca el nombre del producto que quiera modificar");
 					s=lee.String();
-					Editmenu.Producto(s);
+					Editmenu.Producto(s, productos);
 					break;
 				case 4:
 					lee.Print("Introduzca el nombre del producto que quiera buscar");
@@ -51,7 +47,7 @@ public class Submenus {
 		}while(opcion!=0);
 	}
 	
-	public static void menuClientes() {
+	public static void menuClientes(ClienteDAO clientes) {
 		
 		int opcion=-1;
 		String s="";
@@ -63,7 +59,7 @@ public class Submenus {
 			
 			switch(opcion) {
 				case 1:
-					Addmenu.newCliente();
+					Addmenu.newCliente(clientes);
 					break;
 				case 2:
 					lee.Print("Introduzca el dni del cliente a eliminar");
@@ -77,7 +73,7 @@ public class Submenus {
 				case 3:
 					lee.Print("Introduzca el dni del cliente que quiera modificar");
 					s=lee.String();
-					Editmenu.Cliente(s);
+					Editmenu.Cliente(s, clientes);
 					break;
 				case 4:
 					lee.Print("Introduzca el dni del cliente que quiera buscar");
@@ -96,7 +92,7 @@ public class Submenus {
 		}while(opcion!=0);
 	}
 	
-	public static void menuReservas() {
+	public static void menuReservas(ReservaDAO reservas) {
 		
 		int opcion=-1;
 		String s="";
@@ -108,7 +104,7 @@ public class Submenus {
 			
 			switch(opcion) {
 				case 1:
-					Addmenu.newReserva();
+					Addmenu.newReserva(reservas);
 					break;
 				case 2:
 					lee.Print("Introduzca el id de la reserva a eliminar");
@@ -118,7 +114,7 @@ public class Submenus {
 				case 3:
 					lee.Print("Introduzca el id de la reserva que quiera modificar");
 					s=lee.String();
-					Editmenu.Reservas(s);
+					Editmenu.Reservas(s, reservas);
 					break;
 				case 4:
 					lee.Print("Introduzca el id de la reserva que quiera buscar");
@@ -136,4 +132,10 @@ public class Submenus {
 			}
 		}while(opcion!=0);
 	}
+	/**
+	 * 	public HashMap<String,Cliente> getClientes(){
+		
+		return clientes;
+	}
+	 */
 }

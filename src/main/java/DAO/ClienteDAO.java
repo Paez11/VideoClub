@@ -55,11 +55,5 @@ public class ClienteDAO {
 	public Cliente searchCliente(String nombre) {
 		return clientes.get(nombre);
 	}
-
-	
-	
-	
-	
-	
 	
 }

@@ -27,8 +27,6 @@ public class Principal implements IControlador {
 	
 	private void switchMenuPrincipal(int opcion) {
 		
-		
-		
 		switch(opcion) {
 			case 1:
 				Submenus.menuProductos(productos);

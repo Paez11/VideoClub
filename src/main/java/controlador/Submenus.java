@@ -1,6 +1,7 @@
 package controlador;
 
 import DAO.*;
+import modelo.*;
 import utils.lee;
 import vistas.menu;
 
@@ -33,7 +34,9 @@ public class Submenus {
 				case 4:
 					lee.Print("Introduzca el nombre del producto que quiera buscar");
 					s=lee.String();
-					productos.searchProducto(s);
+					Producto p = new Producto();
+					p=productos.searchProducto(s);
+					lee.Print(p);
 					break;
 				case 5:
 					productos.showProducto();
@@ -77,8 +80,10 @@ public class Submenus {
 					break;
 				case 4:
 					lee.Print("Introduzca el dni del cliente que quiera buscar");
+					Cliente c = new Cliente();
 					s=lee.String();
-					clientes.searchCliente(s);
+					c=clientes.searchCliente(s);
+					lee.Print(c);
 					break;
 				case 5:
 					clientes.showClientes();
@@ -119,7 +124,9 @@ public class Submenus {
 				case 4:
 					lee.Print("Introduzca el id de la reserva que quiera buscar");
 					s=lee.String();
-					reservas.searchReserva(s);
+					Reserva r = new Reserva();
+					r=reservas.searchReserva(s);
+					lee.Print(r);
 					break;
 				case 5:
 					reservas.showReserva();

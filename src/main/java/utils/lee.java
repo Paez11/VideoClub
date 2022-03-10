@@ -58,4 +58,8 @@ public class lee {
 	public static void Print(String f) {
 		System.out.println(f);
 	}
+	
+	public static void Print(Object o) {
+		System.out.println(o);
+	}
 }

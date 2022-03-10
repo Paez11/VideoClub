@@ -66,7 +66,7 @@ public class Addmenu {
 		lee.Print("Introduzca el estado del producto");
 		estado estado = null;
 		int opcion=-1;
-		do {
+		//do {
 			
 			menu.estados();
 			opcion=lee.Entero();
@@ -91,7 +91,7 @@ public class Addmenu {
 						lee.Print("error");
 						break;
 			}
-		}while(estado!=null);
+		//}while(estado!=null);
 		lee.Print("Introduzca la clave de la reserva");
 		String clave=lee.String();
 		Reserva reserva=null;

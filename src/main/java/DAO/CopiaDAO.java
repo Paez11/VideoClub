@@ -1,9 +1,15 @@
 package DAO;
-
 import java.util.HashMap;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import modelo.Copia;
 
+
+@XmlRootElement(name="CopiaDAO")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class CopiaDAO {
 	
 	private HashMap <String,Copia> CopiaDAO;
@@ -29,13 +35,16 @@ public class CopiaDAO {
 		return c;	
 	}
 	
-	public boolean editarCopia(String key, Copia nuevaCopia) {
-		boolean result=false;
-		if(!this.CopiaDAO.containsKey(key)) {
-			this.CopiaDAO.put(key,nuevaCopia);
-			result=true;
+	//Editar Clave
+	public boolean editCopia(String key) {
+
+		boolean valid=false;
+		
+		if(this.CopiaDAO.containsKey(key)) {
+			CopiaDAO.get(key).setKey(key);
+			valid=true;
 		}
-		return result;
+		return valid;
 	}
 	
 	//No terminado
@@ -44,15 +53,11 @@ public class CopiaDAO {
 		
 	}
 	
-	public Copia searchCopia(String id) {
+	public Copia searchCopia(String key) {
 		Copia c=null;
-		
-		for (String e: CopiaDAO.keySet()) {
-			if(CopiaDAO.containsKey(id)) {
-				c=CopiaDAO.get(e);
-			}
+		if(this.CopiaDAO.containsKey(key)) {
+			c=this.CopiaDAO.get(key);
 		}
-		
 		return c;
 	}
 }

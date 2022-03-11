@@ -1,6 +1,13 @@
 package DAO;
 
+import java.io.File;
 import java.util.HashMap;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+
 import modelo.Cliente;
 
 public class ClienteDAO {
@@ -54,6 +61,35 @@ public class ClienteDAO {
 	
 	public Cliente searchCliente(String nombre) {
 		return clientes.get(nombre);
+	}
+	
+	public void saveFile (String archivo) {
+		JAXBContext contexto;
+		
+		try {
+			contexto=JAXBContext.newInstance(ClienteDAO.class);
+			Marshaller m = contexto.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			m.marshal(clientes, new File(archivo));
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void loadFile(String archivo) {
+		JAXBContext contexto;
+		
+		try {
+			contexto=JAXBContext.newInstance(ClienteDAO.class);
+			Unmarshaller um= contexto.createUnmarshaller();
+			ClienteDAO newClientes =(ClienteDAO) um.unmarshal(new File(archivo));
+			clientes = newClientes.clientes;
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }

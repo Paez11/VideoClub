@@ -63,7 +63,7 @@ public class Cliente implements ICliente,Serializable{
 				"\ncon edad=" + edad + 
 				"\nvip=" + vip;
 	}
-
+	
 	public boolean equals(Object dni) {
 		boolean result=false;
 		

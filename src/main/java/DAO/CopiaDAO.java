@@ -1,21 +1,27 @@
 package DAO;
 
+import java.io.File;
 import java.util.HashMap;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 import modelo.Copia;
 
 public class CopiaDAO {
 	
-	private HashMap <String,Copia> CopiaDAO;
+	private HashMap <String,Copia> copias;
 
 	public CopiaDAO() {
-		this.CopiaDAO = new HashMap <String,Copia>();
+		this.copias = new HashMap <String,Copia>();
 	}
 	
 	public boolean addCopia(Copia c) {
 		boolean result = false;
-		if(!this.CopiaDAO.containsKey(c.getKey())) {
-			this.CopiaDAO.put(c.getKey(), c);
+		if(!this.copias.containsKey(c.getKey())) {
+			this.copias.put(c.getKey(), c);
 			result =true;
 		}
 		return result;
@@ -23,16 +29,16 @@ public class CopiaDAO {
 	
 	public Copia deleteCopia(String key) {
 		Copia c=null;
-		if(this.CopiaDAO.containsKey(key)) {
-			c=this.CopiaDAO.remove(key);
+		if(this.copias.containsKey(key)) {
+			c=this.copias.remove(key);
 		}
 		return c;	
 	}
 	
 	public boolean editarCopia(String key, Copia nuevaCopia) {
 		boolean result=false;
-		if(!this.CopiaDAO.containsKey(key)) {
-			this.CopiaDAO.put(key,nuevaCopia);
+		if(!this.copias.containsKey(key)) {
+			this.copias.put(key,nuevaCopia);
 			result=true;
 		}
 		return result;
@@ -47,12 +53,41 @@ public class CopiaDAO {
 	public Copia searchCopia(String id) {
 		Copia c=null;
 		
-		for (String e: CopiaDAO.keySet()) {
-			if(CopiaDAO.containsKey(id)) {
-				c=CopiaDAO.get(e);
+		for (String e: copias.keySet()) {
+			if(copias.containsKey(id)) {
+				c=copias.get(e);
 			}
 		}
 		
 		return c;
+	}
+	
+	public void saveFile (String archivo) {
+		JAXBContext contexto;
+		
+		try {
+			contexto=JAXBContext.newInstance(CopiaDAO.class);
+			Marshaller m = contexto.createMarshaller();
+			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			m.marshal(copias, new File(archivo));
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void loadFile(String archivo) {
+		JAXBContext contexto;
+		
+		try {
+			contexto=JAXBContext.newInstance(CopiaDAO.class);
+			Unmarshaller um= contexto.createUnmarshaller();
+			CopiaDAO newCopias =(CopiaDAO) um.unmarshal(new File(archivo));
+			copias = newCopias.copias;
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

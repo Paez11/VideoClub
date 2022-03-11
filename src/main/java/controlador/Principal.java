@@ -11,7 +11,7 @@ import vistas.menu;
 public class Principal implements IControlador {
 
 	static ClienteDAO clientes = new ClienteDAO();
-	static ProductoDAO productos = new ProductoDAO();
+	static ProductoDAO productos = ProductoDAO.getInstance();
 	static CopiaDAO copias = new CopiaDAO();
 	static ReservaDAO reservas = new ReservaDAO();
 	

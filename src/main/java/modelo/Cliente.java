@@ -1,17 +1,10 @@
 package modelo;
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-
-import interfaces.ICliente;
 
 @XmlRootElement(name="Cliente")
 @XmlAccessorType(XmlAccessType.FIELD)
-
-public class Cliente implements ICliente,Serializable{
+public class Cliente implements ICliente, Serializable{
 	/**
 	 * 
 	 */
@@ -19,7 +12,7 @@ public class Cliente implements ICliente,Serializable{
 	@XmlAttribute(name="Nombre")
 	private String nombre;
 	@XmlAttribute(name="DNI")
-	private String dni;	
+
 	@XmlAttribute(name="Edad")
 	private int edad;
 	@XmlAttribute(name="VIP")

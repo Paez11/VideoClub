@@ -8,13 +8,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 import interfaces.ICopia;
 
 
-@XmlRootElement(name="Copia")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Copia implements ICopia{
-	
-	@XmlAttribute(name="Clave", required = true)
-	private String Key;
-	
 	@XmlAttribute(name="Nombre")
 	private String Nombre;
 	

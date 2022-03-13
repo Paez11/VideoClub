@@ -1,27 +1,34 @@
 package DAO;
 
+import java.io.File;
 import java.util.HashMap;
+
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import modelo.Cliente;
-
 
 @XmlRootElement(name="ClienteDAO")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ClienteDAO {
+	private static ClienteDAO _instance;
 	private HashMap<String,Cliente> clientes;
 	
-	
-	public ClienteDAO() {
+
 		clientes = new HashMap<String,Cliente>();
 	}
+	
+	public static ClienteDAO getInstance() {
+		if(_instance==null) {
+			_instance=new ClienteDAO();
+		}
+		return _instance;
+	}
 	/**
-	 * Añadir un cliente
+	 * AÃ±adir un cliente
 	 * @param cliente
-	 * @return true si se ha añadido el cliente o false si no
+	 * @return true si se ha aÃ±adido el cliente o false si no
 	 */
 	public boolean addCliente(Cliente cliente) {
 		boolean result=false;
@@ -91,6 +98,38 @@ public class ClienteDAO {
 	
 	public Cliente searchCliente(String nombre) {
 		return clientes.get(nombre);
+	}
+	
+	public void saveFile(Enum e) {
+		JAXBContext archivo;
+		if(e==Lista.Clientes) {
+			String clienteXML="Cliente.xml";
+			try {
+				archivo=JAXBContext.newInstance(ClienteDAO.class);
+				Marshaller m=archivo.createMarshaller();
+				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				m.marshal(_instance, new File(clienteXML));
+			} catch (JAXBException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}	
+	
+	public void loadFile(Enum e) {
+		JAXBContext archivo;
+		if(e==Lista.Clientes) {
+			String clienteXML="Cliente.xml";
+			try {
+				archivo = JAXBContext.newInstance(ClienteDAO.class);
+			    Unmarshaller um = archivo.createUnmarshaller();
+			     
+			    ClienteDAO newClienteDAO = (ClienteDAO) um.unmarshal( new File(clienteXML) );
+			    clientes=newClienteDAO.clientes;
+			} catch (JAXBException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 	
 }

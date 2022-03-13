@@ -1,18 +1,35 @@
 package DAO;
 
+import java.io.File;
 import java.util.ArrayList;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import controlador.Lista;
 import modelo.Producto;
 
 @XmlRootElement(name="ProductoDAO")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProductoDAO {
-	
+	private static ProductoDAO _instance;
 	private ArrayList<Producto> listaProductos;
+	
+	private ProductoDAO() {
+		listaProductos=new ArrayList<Producto>();
+	}
+	
+	public static ProductoDAO getInstance() {
+		if(_instance==null) {
+			_instance=new ProductoDAO();
+		}
+		return _instance;
+	}
 
 	public boolean addProducto(Producto p) {
 		boolean result=false;
@@ -63,5 +80,37 @@ public class ProductoDAO {
 			}
 		}	
 		return p;
+	}
+	
+	public void saveFile(Enum e) {
+		JAXBContext archivo;
+		if(e==Lista.Productos) {
+			String productoXML="Producto.xml";
+			try {
+				archivo=JAXBContext.newInstance(ProductoDAO.class);
+				Marshaller m=archivo.createMarshaller();
+				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				m.marshal(_instance, new File(productoXML));
+			} catch (JAXBException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}	
+	
+	public void loadFile(Enum e) {
+		JAXBContext archivo;
+		if(e==Lista.Productos) {
+			String productoXML="Producto.xml";
+			try {
+				archivo = JAXBContext.newInstance(ProductoDAO.class);
+			    Unmarshaller um = archivo.createUnmarshaller();
+			     
+			    ProductoDAO newProductoDAO = (ProductoDAO) um.unmarshal( new File(productoXML) );
+			    listaProductos=newProductoDAO.listaProductos;
+			} catch (JAXBException ex) {
+				ex.printStackTrace();
+			}
+		}
 	}
 }

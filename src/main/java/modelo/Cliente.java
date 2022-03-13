@@ -1,16 +1,27 @@
 package modelo;
 import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import interfaces.ICliente;
 
-
-public class Cliente implements ICliente,Serializable{
+@XmlRootElement(name="Cliente")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Cliente implements ICliente, Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@XmlAttribute(name="Nombre")
 	private String nombre;
+	@XmlAttribute(name="DNI")
 	private String dni;
+	@XmlAttribute(name="Edad")
 	private int edad;
+	@XmlAttribute(name="VIP")
 	private boolean vip;
 	
 	public Cliente() {

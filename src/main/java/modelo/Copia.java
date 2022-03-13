@@ -1,12 +1,24 @@
 package modelo;
+import java.io.Serializable;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import interfaces.ICopia;
 
-public class Copia  extends Producto implements ICopia{
+@XmlRootElement(name="Copia")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Copia  extends Producto implements ICopia, Serializable{
+	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	@XmlAttribute(name="Key")
 	private String Key;
+	@XmlAttribute(name="Nombre")
 	private String Nombre;
 	
 	public Copia(String key, String nombre) {

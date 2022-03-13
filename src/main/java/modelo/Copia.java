@@ -1,5 +1,4 @@
 package modelo;
-import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -8,31 +7,32 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import interfaces.ICopia;
 
-@XmlRootElement(name="Copia")
-@XmlAccessorType(XmlAccessType.FIELD)
-public class Copia  extends Producto implements ICopia, Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@XmlAttribute(name="Key")
-	private String Key;
+
 	@XmlAttribute(name="Nombre")
 	private String Nombre;
 	
-	public Copia(String key, String nombre) {
-		super();
-		Key = key;
-		Nombre = nombre;
+	private static Copia miCopia;
+	
+	private Copia(String key, String nombre) {
+		
+		this.Key=Key;
+		this.Nombre=Nombre;
+		
 	}
+	 public  static Copia getmiCopia(String Key,String Nombre) {
+		 
+		 if (miCopia==null) {
+				 miCopia=new Copia(Key,Nombre); //se crea el objeto miconfigurador
+		 }
+		 return miCopia;
+	 }
 
 	public String getKey() {
 		return Key;
 	}
 
 	public void setKey(String key) {
-		Key = key;
+		this.Key=Key;
 	}
 
 	public String getNombre() {
@@ -40,7 +40,7 @@ public class Copia  extends Producto implements ICopia, Serializable{
 	}
 
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.Nombre=Nombre;
 	}
 
 	@Override

@@ -1,6 +1,13 @@
 package modelo;
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import interfaces.ICliente;
+
 
 @XmlRootElement(name="Cliente")
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -9,10 +16,11 @@ public class Cliente implements ICliente, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@XmlAttribute(name="Nombre")
 	private String nombre;
 	@XmlAttribute(name="DNI")
-
+	private String dni;
 	@XmlAttribute(name="Edad")
 	private int edad;
 	@XmlAttribute(name="VIP")
@@ -21,31 +29,14 @@ public class Cliente implements ICliente, Serializable{
 	public Cliente() {
 		
 	}
-
-	private static Cliente miCliente;
-	
 	
 	public Cliente(String nombre, String dni, int edad, boolean vip) {
 		super();
 		this.nombre = nombre;
-		System.out.println("Nombre del cliente: "+this.nombre);
 		this.dni = dni;
-		System.out.println("DNI del cliente: "+this.dni);
 		this.edad = edad;
-		System.out.println("Edad del cliente: "+this.edad);
 		this.vip = vip;
-		System.out.println("El cliente es: "+this.vip);
 	}
-	
-	public static Cliente getSingletonInstance(String nombre,String dni,int edad,boolean vip) {
-		if(miCliente == null) {
-			miCliente=new Cliente(nombre, dni, edad, vip);
-		}else {
-			System.out.println("No se puede crear el cliente"+nombre+"porque hay existe un cliente");
-		}
-		return miCliente;
-		
-	} 
 
 	public String getNombre() {
 		return nombre;

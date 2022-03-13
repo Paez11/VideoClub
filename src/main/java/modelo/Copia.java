@@ -1,5 +1,7 @@
 package modelo;
 
+import java.io.Serializable;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -8,52 +10,43 @@ import javax.xml.bind.annotation.XmlRootElement;
 import interfaces.ICopia;
 
 
-	@XmlAttribute(name="Nombre")
-	private String Nombre;
+@XmlRootElement(name="Copia")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class Copia extends Producto implements ICopia, Serializable {
 	
-	private static Copia miCopia;
-	
-	private Copia(String key, String nombre) {
-		
-		this.Key=Key;
-		this.Nombre=Nombre;
-		
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@XmlAttribute(name="key")
+	private String key;
+
+	public Copia(String key) {
+		super();
+		this.key = key;
 	}
-	 public  static Copia getmiCopia(String Key,String Nombre) {
-		 
-		 if (miCopia==null) {
-				 miCopia=new Copia(Key,Nombre); //se crea el objeto miconfigurador
-		 }
-		 return miCopia;
-	 }
 
 	public String getKey() {
-		return Key;
+		return key;
 	}
 
 	public void setKey(String key) {
-		this.Key=Key;
+		this.key = key;
 	}
-
-	public String getNombre() {
-		return Nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.Nombre=Nombre;
-	}
+	
+	
 
 	@Override
 	public String toString() {
-		return "Copia Key=" + Key + ", Nombre=" + Nombre + "";
+		return "Copia--> \n"
+				+ " clave: "+ key ;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Key == null) ? 0 : Key.hashCode());
-		result = prime * result + ((Nombre == null) ? 0 : Nombre.hashCode());
+		result = prime * result + ((key == null) ? 0 : key.hashCode());
 		return result;
 	}
 
@@ -61,23 +54,20 @@ import interfaces.ICopia;
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Copia other = (Copia) obj;
-		if (Key == null) {
-			if (other.Key != null)
+		if (key == null) {
+			if (other.key != null)
 				return false;
-		} else if (!Key.equals(other.Key))
-			return false;
-		if (Nombre == null) {
-			if (other.Nombre != null)
-				return false;
-		} else if (!Nombre.equals(other.Nombre))
+		} else if (!key.equals(other.key))
 			return false;
 		return true;
 	}
+	
+	
 	
 	
 }

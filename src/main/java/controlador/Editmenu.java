@@ -47,7 +47,7 @@ public class Editmenu {
 			
 			switch(opcion) {
 				case 1:
-					clientes.editCliente(s, null, null);
+					
 					break;
 				case 2:
 

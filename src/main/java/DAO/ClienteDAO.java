@@ -1,10 +1,19 @@
 package DAO;
 
 import java.util.HashMap;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import modelo.Cliente;
 
+
+@XmlRootElement(name="ClienteDAO")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class ClienteDAO {
 	private HashMap<String,Cliente> clientes;
+	
 	
 	public ClienteDAO() {
 		clientes = new HashMap<String,Cliente>();
@@ -34,12 +43,40 @@ public class ClienteDAO {
 	
 	
 	// Edita todos los atributos del cliente, Nombre,Dni,Edad
-	public boolean editCliente(String key,Cliente nuevoNombre, Cliente antiguoNombre) {
+	/**
+	 * Editar nombre del cliente
+	 * @param key del cliente al que se le quiere cambiar el nombre
+	 * @param nombre: nuevo nombre
+	 * @return si se ha cambiado el nombre correctamente o no
+	 */
+	public boolean editClienteNombre(String key,Cliente nombre) {
 		boolean result=false;
 		if(this.clientes.containsKey(key)) {
-			this.clientes.replace(key, antiguoNombre, nuevoNombre);
+			this.clientes.replace(key, nombre);
 		}
 		return result;
+	}
+	/**
+	 * Editar DNI del cliente
+	 * @param key del cliente al que se le quiere cambiar el DNI
+	 * @param dni: nuevo DNI
+	 * @return si se ha cambiado el DNI correctamente true, false si no
+	 */
+	public boolean editClienteDni(String key,Cliente dni) {
+		boolean result=false;
+		if(this.clientes.containsKey(key)) {
+			this.clientes.replace(key, dni);
+			result=true;
+		}
+		return result;
+	}
+	public boolean editClienteEdad(String key,Cliente edad) {
+		boolean result=false;
+		if(this.clientes.containsKey(key)) {
+			this.clientes.replace(key, edad);
+		}
+		return result;
+				
 	}
 	/**
 	 * Lista de todos los clientes

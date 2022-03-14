@@ -20,10 +20,14 @@ public class Copia extends Producto implements ICopia, Serializable {
 	private static final long serialVersionUID = 1L;
 	@XmlAttribute(name="key")
 	private String key;
-
+	
 	public Copia(String key) {
 		super();
 		this.key = key;
+	}
+	
+	public Copia() {
+		this("");
 	}
 
 	public String getKey() {

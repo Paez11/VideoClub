@@ -62,10 +62,12 @@ public class ClienteDAO {
 	 * @param nombre: nuevo nombre
 	 * @return si se ha cambiado el nombre correctamente o no
 	 */
-	public boolean editClienteNombre(String key,Cliente nombre) {
+	public boolean editClienteNombre(String key,String newNombre) {
 		boolean result=false;
-		if(this.clientes.containsKey(key)) {
-			this.clientes.replace(key, nombre);
+		Cliente c=this.searchCliente(key);
+		if(c!=null) {
+			c.setNombre(newNombre);
+			result=true;
 		}
 		return result;
 	}
@@ -75,38 +77,43 @@ public class ClienteDAO {
 	 * @param dni: nuevo DNI
 	 * @return si se ha cambiado el DNI correctamente true, false si no
 	 */
-	public boolean editClienteDni(String key,Cliente dni) {
+	public boolean editClienteDni(String key,String dni) {
 		boolean result=false;
-		if(this.clientes.containsKey(key)) {
-			this.clientes.replace(key, dni);
+		Cliente c=this.searchCliente(key);
+		if(c!=null) {
+			c.setDni(dni);
 			result=true;
 		}
 		return result;
 	}
-	public boolean editClienteEdad(String key,Cliente edad) {
+	public boolean editClienteEdad(String key,int edad) {
 		boolean result=false;
-		if(this.clientes.containsKey(key)) {
-			this.clientes.replace(key, edad);
+		Cliente c=this.searchCliente(key);
+		if(c!=null) {
+			c.setEdad(edad);
+			result=true;
 		}
 		return result;
 				
 	}
-	/**
-	 * Lista de todos los clientes
-	 * @return la lista con los clientes
-	 */
-	public void showClientes() {
-		String lista="|Lista de Clientes|";
-		for(String key:clientes.keySet()) {
-			lista="\nDni: "+key+"\tValor: "+clientes.get(key);
+	
+	public Cliente searchCliente(String dni) {
+		return clientes.get(dni);
+	}
+	
+	
+	
+	@Override
+	public String toString() {
+		
+		String s="";
+		for (String i : clientes.keySet()) {
+			s+="\n"+ clientes.get(i)+"\n";
 		}
+		return s;
 	}
-	
-	public Cliente searchCliente(String nombre) {
-		return clientes.get(nombre);
-	}
-	
-	public void saveFile(Enum e) {
+
+	public void saveFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Clientes) {
 			String clienteXML="Cliente.xml";
@@ -122,7 +129,7 @@ public class ClienteDAO {
 		}
 	}	
 	
-	public void loadFile(Enum e) {
+	public void loadFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Clientes) {
 			String clienteXML="Cliente.xml";

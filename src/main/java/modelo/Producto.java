@@ -24,31 +24,36 @@ public class Producto implements IProducto, Serializable {
 	@XmlAttribute(name="Precio")
 	private double Precio;
 	
-	public Producto() {
-		this("","",-1);
-	}
 	public Producto(String nombre, String descripcion, double precio) {
 		Nombre = nombre;
 		Descripcion = descripcion;
 		Precio = precio;
 	}
 	
+	public Producto() {
+		this("","",-1);
+	}
+	
 	public String getNombre() {
-		return null;
-	}
-	public String getDescripcion() {
-		return null;
-	}
-	public double getPrecio() {
-		return 0;
+		return Nombre;
 	}
 	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+	public String getDescripcion() {
+		return Descripcion;
 	}
 	public void setDescripcion(String descripcion) {
-		
+		Descripcion = descripcion;
+	}
+	public double getPrecio() {
+		return Precio;
 	}
 	public void setPrecio(double precio) {
+		Precio = precio;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "Producto: " + Nombre + "\nDescripcion: " + Descripcion + "\nPrecio: " + Precio + "€";

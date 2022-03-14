@@ -49,24 +49,7 @@ public class CopiaDAO {
 		return c;	
 	}
 	
-	//Editar Clave
-	public boolean editCopia(String key) {
 
-		boolean valid=false;
-		
-		if(this.CopiaDAO.containsKey(key)) {
-			CopiaDAO.get(key).setKey(key);
-			valid=true;
-		}
-		return valid;
-	}
-	
-	//No terminado
-	
-	public void showCopia() {
-		
-	}
-	
 	public Copia searchCopia(String key) {
 		Copia c=null;
 		if(this.CopiaDAO.containsKey(key)) {
@@ -75,7 +58,17 @@ public class CopiaDAO {
 		return c;
 	}
 	
-	public void saveFile(Enum e) {
+	@Override
+	public String toString() {
+		
+		String s="";
+		for (String i : CopiaDAO.keySet()) {
+			s+="\n"+ CopiaDAO.get(i)+"\n";
+		}
+		return s;
+	}
+	
+	public void saveFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Copias) {
 			String copiaXML="Copia.xml";
@@ -91,7 +84,7 @@ public class CopiaDAO {
 		}
 	}	
 	
-	public void loadFile(Enum e) {
+	public void loadFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Copias) {
 			String copiaXML="Copia.xml";

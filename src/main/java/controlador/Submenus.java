@@ -39,7 +39,7 @@ public class Submenus {
 					lee.Print(p);
 					break;
 				case 5:
-					productos.showProducto();
+					lee.show(productos);
 					break;
 				case 0:
 					break;
@@ -86,7 +86,7 @@ public class Submenus {
 					lee.Print(c);
 					break;
 				case 5:
-					clientes.showClientes();
+					lee.show(clientes);
 					break;
 				case 0:
 					break;
@@ -129,7 +129,7 @@ public class Submenus {
 					lee.Print(r);
 					break;
 				case 5:
-					reservas.showReserva();
+					lee.show(reservas);
 					break;
 				case 0:
 					break;
@@ -139,10 +139,4 @@ public class Submenus {
 			}
 		}while(opcion!=0);
 	}
-	/**
-	 * 	public HashMap<String,Cliente> getClientes(){
-		
-		return clientes;
-	}
-	 */
 }

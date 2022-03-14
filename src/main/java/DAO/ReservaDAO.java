@@ -15,7 +15,9 @@ import controlador.Lista;
 import interfaces.ICliente;
 import interfaces.IReserva;
 import modelo.Reserva;
-//martes 15 10:30
+import modelo.estado;
+
+
 @XmlRootElement(name="Reservas")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ReservaDAO {
@@ -39,24 +41,37 @@ public class ReservaDAO {
 		return p;
 	}
 	
-	public boolean editReserva(String key) {
-
+	public boolean editFechaPrevista(String key,String fecha) {
 		boolean valid=false;
-		
-		if(this.alm.containsKey(key)) {
-			alm.get(key).setKey(key);
+		Reserva r=this.searchReserva(key);
+		if(r!=null) {
+			r.setFechaPrevista(fecha);
 			valid=true;
 		}
-		
 		return valid;
 	}
 	
-	public void showReserva() {
-		for(String e:alm.keySet()) {
-			System.out.println(e);
+	public boolean editFechaEntrega(String key,String fecha) {
+		boolean valid=false;
+		Reserva r=this.searchReserva(key);
+		if(r!=null) {
+			r.setFechaReal(fecha);
+			valid=true;
 		}
+		return valid;
 	}
 	
+	public boolean editEstado(String key,estado e) {
+		boolean valid=false;
+		Reserva r=this.searchReserva(key);
+		if(r!=null) {
+			r.setEstado(e);
+			valid=true;
+		}
+		return valid;
+	}
+	
+
 	public Reserva searchReserva(String key) {
 		Reserva r=null;
 		if(this.alm.containsKey(key)) {
@@ -65,7 +80,17 @@ public class ReservaDAO {
 		return r;
 	}
 	
-	public void saveFile(Enum e) {
+	@Override
+	public String toString() {
+		
+		String s="";
+		for (String i : alm.keySet()) {
+			s+="\n"+ alm.get(i)+"\n";
+		}
+		return s;
+	}
+	
+	public void saveFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Reservas) {
 			String reservaXML="Reserva.xml";
@@ -82,7 +107,7 @@ public class ReservaDAO {
 		}
 	}	
 	
-	public void loadFile(Enum e) {
+	public void loadFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Reservas) {
 			String reservaXML="Reserva.xml";

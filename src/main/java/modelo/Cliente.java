@@ -71,10 +71,10 @@ public class Cliente implements ICliente, Serializable{
 	}
 
 	public String toString() {
-		return "Nombre de cliente=" + nombre +
-				"\nDNI:" + dni +
-				"\ncon edad=" + edad + 
-				"\nvip=" + vip;
+		return "Nombre: " + nombre +
+				"\nDNI: " + dni +
+				"\nedad: " + edad + 
+				"\nvip: " + vip;
 	}
 
 	public boolean equals(Object dni) {

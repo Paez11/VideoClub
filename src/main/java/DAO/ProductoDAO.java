@@ -33,11 +33,9 @@ public class ProductoDAO {
 
 	public boolean addProducto(Producto p) {
 		boolean result=false;
-		for(int i=0; i<listaProductos.size(); i++) {
-			if(p!=null && !listaProductos.get(i).equals(p)) {
-				listaProductos.add(p);
-				result=true;
-			}
+		if(!this.listaProductos.contains(p)) {
+			listaProductos.add(p);
+			result=true;
 		}
 		return result;
 	}
@@ -53,23 +51,39 @@ public class ProductoDAO {
 		return p;
 	}
 	
-	public boolean editProducto(String nombre, String s, double d) {
+	public boolean editNombre(String nombre) {
 		boolean result=false;
 		Producto p = new Producto();
 		for(int i=0; i<listaProductos.size(); i++) {
-			if(nombre!=null) {
+			if(p!=null) {
 				p=listaProductos.get(i);
-				p.setNombre(s);
-				p.setDescripcion(s);
-				p.setPrecio(d);
+				p.setNombre(nombre);
 			}
 		}
-		
+		return result;
+	}
+	public boolean editDescripcion(String descripcion) {
+		boolean result=false;
+		Producto p = new Producto();
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(p!=null) {
+				p=listaProductos.get(i);
+				p.setDescripcion(descripcion);
+			}
+		}	
 		return result;
 	}
 	
-	public void showProducto() {
-		//Rafa tiene que ponerlo de vista
+	public boolean editPrecio(double precio) {
+		boolean result=false;
+		Producto p = new Producto();
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(p!=null) {
+				p=listaProductos.get(i);
+				p.setPrecio(precio);
+			}
+		}	
+		return result;
 	}
 	
 	public Producto searchProducto(String name) {
@@ -82,7 +96,16 @@ public class ProductoDAO {
 		return p;
 	}
 	
-	public void saveFile(Enum e) {
+	@Override
+	public String toString() {
+		String s="";
+		for (Producto p : listaProductos) {
+			s+=p.toString();
+		}
+		return s;
+	}
+	
+	public void saveFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Productos) {
 			String productoXML="Producto.xml";
@@ -98,7 +121,7 @@ public class ProductoDAO {
 		}
 	}	
 	
-	public void loadFile(Enum e) {
+	public void loadFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Productos) {
 			String productoXML="Producto.xml";

@@ -64,7 +64,7 @@ public class Addmenu {
 		String fechaPrevista=lee.String();
 		String fechaReal=fechaPrevista;
 		lee.Print("Introduzca el estado del producto");
-		estado estado = null;
+		estado e = null;
 		int opcion=-1;
 		//do {
 			
@@ -73,29 +73,29 @@ public class Addmenu {
 			
 			switch(opcion) {
 				case 1:
-					estado=modelo.estado.BIEN;
+					e=estado.BIEN;
 					break;
 				case 2:
-					estado=modelo.estado.ROTO;
+					e=estado.ROTO;
 					break;
 				case 3:
-					estado=modelo.estado.SIN_CARCASA;
+					e=estado.SIN_CARCASA;
 					break;
 				case 4:
-					estado=modelo.estado.SUCIO;
+					e=estado.SUCIO;
 					break;
 				case 5:
-					estado=modelo.estado.RAYADO;
+					e=estado.RAYADO;
 					break;
 					default:
 						lee.Print("error");
 						break;
 			}
-		//}while(estado!=null);
+		//}while(e!=null);
 		lee.Print("Introduzca la clave de la reserva");
 		String clave=lee.String();
 		Reserva reserva=null;
-		reserva=new Reserva(fechaCreacion,fechaPrevista,fechaReal,estado,clave);
+		reserva=new Reserva(fechaCreacion,fechaPrevista,fechaReal,e,clave);
 		
 		if(reserva!=null) {
 			lee.Print("Reserva añadido correctamente");

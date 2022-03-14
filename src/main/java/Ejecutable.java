@@ -1,4 +1,3 @@
-
 import controlador.Principal;
 
 public class Ejecutable {

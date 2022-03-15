@@ -1,4 +1,6 @@
 package controlador;
+import java.time.LocalDate;
+
 import DAO.*;
 import modelo.*;
 import utils.lee;
@@ -59,7 +61,7 @@ public class Addmenu {
 	public static boolean newReserva(ReservaDAO reservas) {
 		
 		lee.Print("Introduzca la fecha de hoy de la reserva");
-		String fechaCreacion=lee.String();
+		LocalDate fechaCreacion = null;
 		lee.Print("Introduzca la fecha prevista para devolver la pelicula");
 		String fechaPrevista=lee.String();
 		String fechaReal=fechaPrevista;

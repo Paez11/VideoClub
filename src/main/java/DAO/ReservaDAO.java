@@ -12,8 +12,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import controlador.Lista;
-import interfaces.ICliente;
-import interfaces.IReserva;
+import modelo.Cliente;
 import modelo.Reserva;
 import modelo.estado;
 
@@ -21,8 +20,19 @@ import modelo.estado;
 @XmlRootElement(name="Reservas")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ReservaDAO {
-
+	private static ReservaDAO _instance;
 	private HashMap<String, Reserva> alm;
+	
+	private ReservaDAO(){
+		alm = new HashMap<String,Reserva>();
+	}
+	
+	public static ReservaDAO getInstance() {
+		if(_instance==null) {
+			_instance=new ReservaDAO();
+		}
+		return _instance;
+	}
 	
 	public boolean addReserva(Reserva r) {
 		boolean valid=false;

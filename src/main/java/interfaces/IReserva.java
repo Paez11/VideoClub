@@ -1,9 +1,11 @@
 package interfaces;
 
+import java.time.LocalDate;
+
 import modelo.estado;
 
 public interface IReserva {
-	String getFechaCreacion();
+	LocalDate getFechaCreacion();
 	String getFechaPrevista();
 	String getFechaReal();
 	estado getEstado();

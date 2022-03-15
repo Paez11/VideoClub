@@ -46,7 +46,7 @@ public class lee {
 		boolean valid=true;
 		do {
 			try {
-				x=s.next();
+				x=s.nextLine();
 				valid=false;
 			} catch (Exception e) {
 				// TODO: handle exception
@@ -56,6 +56,7 @@ public class lee {
 		} while (valid);
 		return x;
 	}
+	
 	
 	public static void Print(String f) {
 		System.out.println(f);

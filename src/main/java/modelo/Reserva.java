@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +19,7 @@ public class Reserva implements IReserva, Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@XmlAttribute(name="fechaCreacion")
-	private String fechaCreacion;
+	private LocalDate fechaCreacion;
 	@XmlAttribute(name="fechaPrevista")
 	private String fechaPrevista;
 	@XmlAttribute(name="fechaReal")
@@ -30,9 +31,9 @@ public class Reserva implements IReserva, Serializable{
 	
 	
 	
-	public Reserva(String fechaCreacion, String fechaPrevista, String fechaReal, estado estado, String key) {
+	public Reserva(LocalDate fechaCreacion, String fechaPrevista, String fechaReal, estado estado, String key) {
 		super();
-		this.fechaCreacion = fechaCreacion;
+		this.fechaCreacion = LocalDate.now();
 		this.fechaPrevista = fechaPrevista;
 		this.fechaReal = fechaReal;
 		this.estado = estado;
@@ -41,7 +42,7 @@ public class Reserva implements IReserva, Serializable{
 	
 	public Reserva() {
 		super();
-		this.fechaCreacion = null;
+		this.fechaCreacion = LocalDate.now();
 		this.fechaPrevista = null;
 		this.fechaReal = null;
 		this.estado = null;
@@ -49,8 +50,7 @@ public class Reserva implements IReserva, Serializable{
 	}
 	
 
-	public String getFechaCreacion() {
-		// TODO Auto-generated method stub
+	public LocalDate getFechaCreacion() {
 		return this.fechaCreacion;
 	}
 
@@ -78,7 +78,7 @@ public class Reserva implements IReserva, Serializable{
 		return this.key;
 	}
 
-	public void setFechaCreacion(String fechaCreacion) {
+	public void setFechaCreacion(LocalDate fechaCreacion) {
 		// TODO Auto-generated method stub
 		this.fechaCreacion = fechaCreacion;
 	}
@@ -105,6 +105,11 @@ public class Reserva implements IReserva, Serializable{
 	public String toString() {
 		return "Reserva [fechaCreacion=" + fechaCreacion + ", fechaPrevista=" + fechaPrevista + ", fechaReal="
 				+ fechaReal + ", estado=" + estado + ", key=" + key + "]";
+	}
+
+	public void setFechaCreacion(String fechaCreacion) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

@@ -13,7 +13,7 @@ public class Principal implements IControlador {
 	static ClienteDAO clientes = ClienteDAO.getInstance();
 	static ProductoDAO productos = ProductoDAO.getInstance();
 	static CopiaDAO copias = CopiaDAO.getInstance();
-	static ReservaDAO reservas = new ReservaDAO();
+	static ReservaDAO reservas = ReservaDAO.getInstance();
 	
 	public void run() {
 		int opcion=-1;

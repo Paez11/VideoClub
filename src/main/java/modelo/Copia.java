@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -38,7 +39,11 @@ public class Copia extends Producto implements ICopia, Serializable {
 		this.key = key;
 	}
 	
-	
+	public static int generarID() {
+		Random ran = new Random(System.nanoTime());
+		int n=ran.nextInt();
+		return n;
+	}
 
 	@Override
 	public String toString() {

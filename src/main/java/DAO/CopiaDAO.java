@@ -32,6 +32,11 @@ public class CopiaDAO {
 		return _instance;
 	}
 	
+	/**
+	 * metodo que añade una copia
+	 * @param c--> Copia
+	 * @return devuelve true si se ha añadido y false si no
+	 */
 	public boolean addCopia(Copia c) {
 		boolean result = false;
 		if(!this.CopiaDAO.containsKey(c.getKey())) {
@@ -40,7 +45,11 @@ public class CopiaDAO {
 		}
 		return result;
 	}
-	
+	/**
+	 * Metodo que elimina un cliente
+	 * @param key de la copia
+	 * @return la copia que se ha eliminado
+	 */
 	public Copia deleteCopia(String key) {
 		Copia c=null;
 		if(this.CopiaDAO.containsKey(key)) {
@@ -48,7 +57,11 @@ public class CopiaDAO {
 		}
 		return c;	
 	}
-	
+	/**
+	 * Metodo que busca la copia
+	 * @param key de la copia
+	 * @return la copia buscada
+	 */
 
 	public Copia searchCopia(String key) {
 		Copia c=null;

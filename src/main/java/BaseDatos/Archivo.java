@@ -12,7 +12,10 @@ import controlador.Lista;
 
 public class Archivo {
 		
-	
+	/**
+	 * Según el enum que se le de como parámetro, guarda los datos en un archivo xml
+	 * @param producto Esto será un Enum
+	 */
 	public void saveProductos(ProductoDAO producto) {
 		JAXBContext archivo;
 		//if(l==Lista.Productos) {
@@ -29,6 +32,10 @@ public class Archivo {
 		//}
 	}	
 	
+	/**
+	 * Según el enum que se le de como parámetro, carga los datos desde un archivo xml
+	 * @param producto Esto será un Enum
+	 */
 	public void loadProductos(ProductoDAO producto) {
 		JAXBContext archivo;
 		//if(l==Lista.Productos) {

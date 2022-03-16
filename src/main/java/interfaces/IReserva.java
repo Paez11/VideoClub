@@ -10,11 +10,11 @@ public interface IReserva {
 	String getFechaReal();
 	estado getEstado();
 	String getKey();
-	void setFechaCreacion(String fechaCreacion);
+	void setFechaCreacion(LocalDate fechaCreacion);
 	void setFechaPrevista(String fechaPrevista);
 	void setFechaReal(String fechaReal);
 	void setEstado(estado estado);
 	void setKey(String key);
-	boolean equals(String key);
+	boolean equals(Object o);
 	String toString();
 }

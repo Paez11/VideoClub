@@ -8,7 +8,7 @@ import vistas.menu;
 public class Submenus {
 	
 	
- public static void menuProductos(ProductoDAO productos) {
+ public static void menuProductos(ProductoDAO productos, CopiaDAO copias) {
 		
 		int opcion=-1;
 		String s="";
@@ -19,7 +19,7 @@ public class Submenus {
 			
 			switch(opcion) {
 				case 1:
-					Addmenu.newProducto(productos);
+					Addmenu.newProducto(productos, copias);
 					break;
 				case 2:
 					lee.Print("Introduzca el nombre del producto a eliminar");
@@ -39,7 +39,11 @@ public class Submenus {
 					lee.Print(p);
 					break;
 				case 5:
+					
 					lee.show(productos);
+					break;
+				case 6:
+					lee.show(copias);
 					break;
 				case 0:
 					break;
@@ -97,7 +101,7 @@ public class Submenus {
 		}while(opcion!=0);
 	}
 	
-	public static void menuReservas(ReservaDAO reservas) {
+	public static void menuReservas(ReservaDAO reservas, CopiaDAO copias, ClienteDAO clientes) {
 		
 		int opcion=-1;
 		String s="";
@@ -109,7 +113,7 @@ public class Submenus {
 			
 			switch(opcion) {
 				case 1:
-					Addmenu.newReserva(reservas);
+					Addmenu.newReserva(reservas,copias,clientes);
 					break;
 				case 2:
 					lee.Print("Introduzca el id de la reserva a eliminar");

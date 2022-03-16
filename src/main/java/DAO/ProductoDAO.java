@@ -87,9 +87,9 @@ public class ProductoDAO {
 	}
 	
 	public Producto searchProducto(String name) {
-		Producto p=new Producto();
+		Producto p=null;
 		for(int i=0; i<listaProductos.size(); i++) {
-			if(name!=null) {
+			if(listaProductos.get(i).getNombre().equals(name)) {
 				p=listaProductos.get(i);
 			}
 		}	
@@ -100,7 +100,7 @@ public class ProductoDAO {
 	public String toString() {
 		String s="";
 		for (Producto p : listaProductos) {
-			s+=p.toString();
+			s+=p.toString()+"\n"+"----------------------------"+"\n";
 		}
 		return s;
 	}

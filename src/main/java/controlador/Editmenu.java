@@ -1,7 +1,6 @@
 package controlador;
 
 import DAO.ClienteDAO;
-import DAO.CopiaDAO;
 import DAO.ProductoDAO;
 import DAO.ReservaDAO;
 import modelo.estado;

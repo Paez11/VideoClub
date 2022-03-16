@@ -1,6 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -21,13 +22,15 @@ public class Copia extends Producto implements ICopia, Serializable {
 	@XmlAttribute(name="key")
 	private String key;
 	
-	public Copia(String key) {
-		super();
-		this.key = key;
+	
+	public Copia(String nombre, String descripcion, double precio, int nCopias, String key) {
+		super(nombre, descripcion, precio, nCopias);
+		this.key=key;
 	}
 	
 	public Copia() {
-		this("");
+		super();
+		this.key="";
 	}
 
 	public String getKey() {
@@ -38,14 +41,20 @@ public class Copia extends Producto implements ICopia, Serializable {
 		this.key = key;
 	}
 	
-	
-
-	@Override
-	public String toString() {
-		return "Copia--> \n"
-				+ " clave: "+ key ;
+	public String generarID() {
+		String id = UUID.randomUUID().toString();
+		return id;
 	}
 
+	
+	@Override
+	public String toString() {
+		return "Copia--> \n"+super.toString()
+				+ "\nclave: "+ key + "\n"+"----------------------------";
+	}
+
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

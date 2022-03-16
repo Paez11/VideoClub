@@ -28,6 +28,7 @@ public class menu{
 		System.out.println("3. Editar producto");
 		System.out.println("4. Ver producto");
 		System.out.println("5. Ver todos los productos");
+		System.out.println("6. Ver las copias de los productos");
 		System.out.println("0. Volver");
 	}
 

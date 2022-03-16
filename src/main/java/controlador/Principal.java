@@ -29,13 +29,13 @@ public class Principal implements IControlador {
 		
 		switch(opcion) {
 			case 1:
-				Submenus.menuProductos(productos);
+				Submenus.menuProductos(productos, copias);
 				break;
 			case 2:
 				Submenus.menuClientes(clientes);
 				break;
 			case 3:
-				Submenus.menuReservas(reservas);
+				Submenus.menuReservas(reservas,copias,clientes);
 				break;
 			case 0:
 				break;

@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -28,43 +29,51 @@ public class Reserva implements IReserva, Serializable{
 	private estado estado;
 	@XmlAttribute(name="key", required=true)
 	private String key;
+	private String producto;
+	private String dni;
 	
 	
-	
-	public Reserva(LocalDate fechaCreacion, String fechaPrevista, String fechaReal, estado estado, String key) {
-		super();
+	public Reserva(LocalDate fechaCreacion, String fechaPrevista, String fechaReal, estado estado, String key, String
+			producto, String dni) {
 		this.fechaCreacion = LocalDate.now();
 		this.fechaPrevista = fechaPrevista;
 		this.fechaReal = fechaReal;
 		this.estado = estado;
 		this.key = key;
+		this.producto= producto;
+		this.dni= dni;
 	}
 	
 	public Reserva() {
-		super();
-		this.fechaCreacion = LocalDate.now();
-		this.fechaPrevista = null;
-		this.fechaReal = null;
-		this.estado = null;
-		this.key = null;
+		this(LocalDate.now(),"","",null,"","","");
 	}
 	
 
+
 	public LocalDate getFechaCreacion() {
-		return this.fechaCreacion;
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(LocalDate fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
 	}
 
 	public String getFechaPrevista() {
-		// TODO Auto-generated method stub
-		return this.fechaPrevista;
+		return fechaPrevista;
+	}
+
+	public void setFechaPrevista(String fechaPrevista) {
+		this.fechaPrevista = fechaPrevista;
 	}
 
 	public String getFechaReal() {
-		// TODO Auto-generated method stub
-		return this.fechaReal;
+		return fechaReal;
 	}
 
-	
+	public void setFechaReal(String fechaReal) {
+		this.fechaReal = fechaReal;
+	}
+
 	public estado getEstado() {
 		return estado;
 	}
@@ -74,45 +83,87 @@ public class Reserva implements IReserva, Serializable{
 	}
 
 	public String getKey() {
-		// TODO Auto-generated method stub
-		return this.key;
-	}
-
-	public void setFechaCreacion(LocalDate fechaCreacion) {
-		// TODO Auto-generated method stub
-		this.fechaCreacion = fechaCreacion;
-	}
-
-
-	public void setFechaPrevista(String fechaPrevista) {
-		this.fechaPrevista = fechaPrevista;
-	}
-
-	public void setFechaReal(String fechaReal) {
-		this.fechaReal = fechaReal;
+		return key;
 	}
 
 	public void setKey(String key) {
 		this.key = key;
 	}
+	
+	
+	
+	public String getProducto() {
+		return producto;
+	}
 
-	public boolean equals(String key) {
-		// TODO Auto-generated method stub
-		return false;
+	public void setProducto(String producto) {
+		this.producto = producto;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+	
+
+	public String generarID() {
+		String id = UUID.randomUUID().toString();
+		return id;
+	}
+	
+	@Override
+	public String toString() {
+		return "Reserva-->\n"
+				+ "\n fechaCreacion:" + fechaCreacion 
+				+ "\n fechaPrevista: " + fechaPrevista 
+				+ "\n fechaReal: "+ fechaReal 
+				+ "\n estado: " + estado 
+				+ "\n key: " + key
+				+ "\n producto: " + producto
+				+ "\n dni: " + dni;		
+	}
+
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
+		result = prime * result + ((key == null) ? 0 : key.hashCode());
+		result = prime * result + ((producto == null) ? 0 : producto.hashCode());
+		return result;
 	}
 
 	@Override
-	public String toString() {
-		return "Reserva [fechaCreacion=" + fechaCreacion + ", fechaPrevista=" + fechaPrevista + ", fechaReal="
-				+ fechaReal + ", estado=" + estado + ", key=" + key + "]";
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Reserva other = (Reserva) obj;
+		if (dni == null) {
+			if (other.dni != null)
+				return false;
+		} else if (!dni.equals(other.dni))
+			return false;
+		if (estado != other.estado)
+			return false;
+		if (key == null) {
+			if (other.key != null)
+				return false;
+		} else if (!key.equals(other.key))
+			return false;
+		if (producto == null) {
+			if (other.producto != null)
+				return false;
+		} else if (!producto.equals(other.producto))
+			return false;
+		return true;
 	}
-
-	public void setFechaCreacion(String fechaCreacion) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	
-
 }

@@ -12,7 +12,6 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import controlador.Lista;
-import modelo.Cliente;
 import modelo.Reserva;
 import modelo.estado;
 
@@ -95,7 +94,7 @@ public class ReservaDAO {
 		
 		String s="";
 		for (String i : alm.keySet()) {
-			s+="\n"+ alm.get(i)+"\n";
+			s+=alm.get(i)+"\n"+"----------------------------"+"\n";
 		}
 		return s;
 	}

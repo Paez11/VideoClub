@@ -23,15 +23,18 @@ public class Producto implements IProducto, Serializable {
 	private String Descripcion;
 	@XmlAttribute(name="Precio")
 	private double Precio;
+	@XmlAttribute(name="NumeroCopias")
+	private int nCopias;
 	
-	public Producto(String nombre, String descripcion, double precio) {
+	public Producto(String nombre, String descripcion, double precio, int nCopias) {
 		Nombre = nombre;
 		Descripcion = descripcion;
 		Precio = precio;
+		this.nCopias= nCopias;
 	}
 	
 	public Producto() {
-		this("","",-1);
+		this("","",-1,-1);
 	}
 	
 	public String getNombre() {
@@ -53,10 +56,17 @@ public class Producto implements IProducto, Serializable {
 		Precio = precio;
 	}
 	
-	
+	public int getnCopias() {
+		return nCopias;
+	}
+
+	public void setnCopias(int nCopias) {
+		this.nCopias = nCopias;
+	}
+
 	@Override
 	public String toString() {
-		return "Producto: " + Nombre + "\nDescripcion: " + Descripcion + "\nPrecio: " + Precio + "€";
+		return "Producto: " + Nombre + "\nDescripcion: " + Descripcion + "\nPrecio: " + Precio + "€" + "\nCopias: "+ nCopias;
 	}
 	
 	public boolean equals(Object obj) {

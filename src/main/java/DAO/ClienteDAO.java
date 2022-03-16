@@ -108,7 +108,7 @@ public class ClienteDAO {
 		
 		String s="";
 		for (String i : clientes.keySet()) {
-			s+="\n"+ clientes.get(i)+"\n";
+			s+=clientes.get(i)+"\n"+"----------------------------"+"\n";
 		}
 		return s;
 	}

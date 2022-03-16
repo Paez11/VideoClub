@@ -9,31 +9,51 @@ import vistas.menu;
 public class Addmenu {
 	
 	
-	public static boolean newProducto(ProductoDAO productos) {
+	public static boolean newProducto(ProductoDAO productos, CopiaDAO copias) {
 			
-			lee.Print("Introduzca el nombre del producto");
-			String id=lee.String();
+			boolean valid=true;
+			String id="";
+			do {	
+				lee.Print("Introduzca el nombre del producto");
+				id=lee.String();
+				valid=true;
+				if(productos.searchProducto(id)!=null) {
+					lee.Print("Ya existe un producto con ese nombre");
+					valid=false;
+				}
+			}while(!valid);
 			lee.Print("Introduzca una descripcion del producto");
 			String des=lee.String();
 			lee.Print("Introduzca el precio del producto");
 			double precio=lee.Double();
-			
-			Producto producto=null;
-			producto=new Producto(id,des,precio);
-			
-			if(producto!=null) {
+			lee.Print("Introduzca el numero de copias");
+			int cops=lee.Entero();
+			Producto p=null;
+			p=new Producto(id,des,precio,cops);
+			generarCopias(cops,p,copias);
+			if(p!=null) {
 				lee.Print("Producto añadido correctamente");
 			}
 			
-			return productos.addProducto(producto);
+			return productos.addProducto(p);
 		}
 	
 	public static boolean newCliente(ClienteDAO clientes) {
 		
+		boolean valid=true;
+		String dni="";
+		
 		lee.Print("Introduzca el nombre del cliente");
 		String id=lee.String();
-		lee.Print("Introduzca el dni del cliente");
-		String dni=lee.String();
+		do {
+			lee.Print("Introduzca el dni del cliente");
+			dni=lee.String();
+			valid=true;
+			if(clientes.searchCliente(dni)!=null) {
+				lee.Print("Ya existe un cliente con este dni");
+				valid=false;
+			}
+		}while(!valid);
 		lee.Print("Introduzca la edad del cliente");
 		int edad=lee.Entero();
 		lee.Print("¿va a ser cliente vip?\n 1 para vip\n 2 para cliente normal");
@@ -58,13 +78,35 @@ public class Addmenu {
 		return clientes.addCliente(cliente);
 	}
 	
-	public static boolean newReserva(ReservaDAO reservas) {
+	public static boolean newReserva(ReservaDAO reservas,CopiaDAO copias, ClienteDAO clientes) {
 		
-		lee.Print("Introduzca la fecha de hoy de la reserva");
-		LocalDate fechaCreacion = null;
-		lee.Print("Introduzca la fecha prevista para devolver la pelicula");
+		boolean valid=true;
+		String id="";
+		do {	
+			lee.Print("Introduzca el id de la copia que quiere reservar");
+			id=lee.String();
+			valid=true;
+			if(copias.searchCopia(id)==null) {
+				lee.Print("No existe un producto con esa id");
+				valid=false;
+			}
+		}while(!valid);
+		
+		String dni="";
+		do {	
+			lee.Print("Introduzca el dni del cliente que va ha reservar el producto");
+			dni=lee.String();
+			valid=true;
+			if(clientes.searchCliente(dni)==null) {
+				lee.Print("No existe un cliente con ese dni");
+				valid=false;
+			}
+		}while(!valid);
+		
+		LocalDate fechaCreacion = LocalDate.now();
+		lee.Print("Introduzca la fecha prevista para devolver la pelicula (año-mes-dia)");
 		String fechaPrevista=lee.String();
-		String fechaReal=fechaPrevista;
+		String fechaReal="Sin entrega";
 		lee.Print("Introduzca el estado del producto");
 		estado e = null;
 		int opcion=-1;
@@ -94,10 +136,12 @@ public class Addmenu {
 						break;
 			}
 		//}while(e!=null);
-		lee.Print("Introduzca la clave de la reserva");
-		String clave=lee.String();
+		String clave="";
 		Reserva reserva=null;
-		reserva=new Reserva(fechaCreacion,fechaPrevista,fechaReal,e,clave);
+		reserva=new Reserva(fechaCreacion,fechaPrevista,fechaReal,e,clave,id,dni);
+		clave=reserva.generarID();
+		reserva.setKey(clave);
+		lee.Print("id de la reserva --> "+clave);
 		
 		if(reserva!=null) {
 			lee.Print("Reserva añadido correctamente");
@@ -106,8 +150,19 @@ public class Addmenu {
 		return reservas.addReserva(reserva);
 	}
 	
-	/*
-	 * 	lee.print("Introduzca la fecha real de entrega");
-		String fechaReal=lee.Float();
-	 */
+	public static Copia generarCopias(int cops, Producto p,CopiaDAO copias) {
+		int cont=0;
+		String id="";
+		Copia c =new Copia();
+		while(cont<cops){
+			id=c.generarID();
+			c.setKey(id);
+			c = new Copia(p.getNombre(),p.getDescripcion(),p.getPrecio(), p.getnCopias(), c.getKey());
+			copias.addCopia(c);
+			cont++;
+		}
+		
+		return c;
+		
+	}
 }

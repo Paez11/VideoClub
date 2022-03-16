@@ -9,7 +9,12 @@ import vistas.menu;
 
 public class Editmenu {
 	
-	
+	/**
+	 * Metodo que contiene un switch con los casos necesarios para editar cada atributo de uno de los elementos de la
+	 * coleccion productos
+	 * @param s recibira una cadena que se correspondera con el nombre del producto que se quiera editar
+	 * @param productos arrayList de productos
+	 */
 	public static void Producto(String s, ProductoDAO productos) {
 		int opcion=-1;
 		
@@ -43,6 +48,12 @@ public class Editmenu {
 		}while(opcion!=0);
 	}
 	
+	/**
+	 * Metodo que contiene un switch con los casos necesarios para editar cada atributo de uno de los elementos de la
+	 * coleccion clientes
+	 * @param s recibira una cadena que se correspondera con el dni del cliente  que se quiera editar
+	 * @param clientes hashMap de clientes
+	 */
 	public static void Cliente(String s, ClienteDAO clientes) {
 		int opcion=-1;
 		
@@ -76,6 +87,12 @@ public class Editmenu {
 		}while(opcion!=0);
 	}
 	
+	/**
+	 * Metodo que contiene un switch con los casos necesarios para editar cada atributo de uno de los elementos de la
+	 * coleccion reservas
+	 * @param s recibira una cadena que se correspondera al id de la reserva que se quiera editar
+	 * @param reservas hashMap de reservas
+	 */
 	public static void Reservas(String s, ReservaDAO reservas) {
 		int opcion=-1;
 		

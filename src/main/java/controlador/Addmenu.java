@@ -84,13 +84,21 @@ public class Addmenu {
 		String id="";
 		do {	
 			lee.Print("Introduzca el id de la copia que quiere reservar");
+			lee.Print("Escriba (salir) para salir");
 			id=lee.String();
 			valid=true;
 			if(copias.searchCopia(id)==null) {
 				lee.Print("No existe un producto con esa id");
 				valid=false;
 			}
+			if(id.equals("salir")) {
+				valid=true;
+			}
 		}while(!valid);
+		
+		if(id.equals("salir")) {
+			return false;
+		}
 		
 		String dni="";
 		do {	
@@ -101,7 +109,14 @@ public class Addmenu {
 				lee.Print("No existe un cliente con ese dni");
 				valid=false;
 			}
+			if(dni.equals("salir")) {
+				valid=true;
+			}
 		}while(!valid);
+		
+		if(dni.equals("salir")) {
+			return false;
+		}
 		
 		LocalDate fechaCreacion = LocalDate.now();
 		lee.Print("Introduzca la fecha prevista para devolver la pelicula (año-mes-dia)");

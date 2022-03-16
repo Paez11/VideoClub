@@ -41,6 +41,10 @@ public class Copia extends Producto implements ICopia, Serializable {
 		this.key = key;
 	}
 	
+	/**
+	 * Metodo que genera un ID aleatorio
+	 * @return devuelve el número aleatorio generado
+	 */
 	public String generarID() {
 		String id = UUID.randomUUID().toString();
 		return id;

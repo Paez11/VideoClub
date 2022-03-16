@@ -1,7 +1,7 @@
 package modelo;
 
 import java.io.Serializable;
-
+import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -41,7 +41,10 @@ public class Copia extends Producto implements ICopia, Serializable {
 		this.key = key;
 	}
 	
-
+	public String generarID() {
+		String id = UUID.randomUUID().toString();
+		return id;
+	}
 
 	
 	@Override

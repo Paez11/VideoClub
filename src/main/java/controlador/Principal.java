@@ -15,6 +15,10 @@ public class Principal implements IControlador {
 	static CopiaDAO copias = CopiaDAO.getInstance();
 	static ReservaDAO reservas = ReservaDAO.getInstance();
 	
+	/**
+	 * Metodo que sera llamado en el main de la clase ejecutable y que sera el inicio del programa, es decir, llamara al
+	 * switch del menu principal hasta que el usuario decida salir
+	 */
 	public void run() {
 		int opcion=-1;
 		do {
@@ -25,6 +29,11 @@ public class Principal implements IControlador {
 		lee.Print("Adios");
 	}
 	
+	/**
+	 * Metodo que contendra el switch principal que redirigira en cada case a  uno de los menus para hacer las operaciones 
+	 * en cada coleccion
+	 * @param opcion variable primitiva entera que recibira para seleccionar un posible case del switch
+	 */
 	private void switchMenuPrincipal(int opcion) {
 		
 		switch(opcion) {

@@ -7,7 +7,13 @@ import vistas.menu;
 
 public class Submenus {
 	
-	
+
+	/**
+	 * Metodo que contiene un switch en el que permitira en cada caso hacer una de las funciones que requiere el menu
+	 * de productos
+	 * @param productos arraylist de productos
+	 * @param copias hashmap de copias
+	 */
  public static void menuProductos(ProductoDAO productos, CopiaDAO copias) {
 		
 		int opcion=-1;
@@ -66,6 +72,11 @@ public class Submenus {
 		}while(opcion!=0);
 	}
 	
+ 	/**
+ 	 * Metodo que contiene un switch en el que permitira en cada caso hacer una de las funciones que requiere el menu
+ 	 * de clientes
+ 	 * @param clientes hashMap de clientes
+ 	 */
 	public static void menuClientes(ClienteDAO clientes) {
 		
 		int opcion=-1;
@@ -128,6 +139,13 @@ public class Submenus {
 		}while(opcion!=0);
 	}
 	
+	/**
+	 * Metodo que contiene un switch en el que permitira en cada caso hacer una de las funciones que requiere el menu
+	 * de reservas
+	 * @param reservas hashMap de reservas
+	 * @param copias hashMap de copias
+	 * @param clientes hashMap de clientes
+	 */
 	public static void menuReservas(ReservaDAO reservas, CopiaDAO copias, ClienteDAO clientes) {
 		
 		int opcion=-1;

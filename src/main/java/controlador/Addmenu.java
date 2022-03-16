@@ -8,7 +8,14 @@ import vistas.menu;
 
 public class Addmenu {
 	
-	
+	/**
+	 * Metodo que inserta un nuevo producto al arraylist de productos segun los parametros que introduzca el usuario por
+	 * teclado
+	 * @param productos Arraylist de productos que contiene el producto que se quiere modificar
+	 * @param copias HashMap de copias que contiene las copias del producto que se creara segun el numero que introduzca
+	 * el usuario
+	 * @return añade un producto a la coleccion si no ha ocurrido ningun problema y false si no se ha podido
+	 */
 	public static boolean newProducto(ProductoDAO productos, CopiaDAO copias) {
 			
 			boolean valid=true;
@@ -38,6 +45,12 @@ public class Addmenu {
 			return productos.addProducto(p);
 		}
 	
+	/**
+	 * Metodo que inserta un nuevo cliente al hashMap de clientes segun los parametros que introduzca el usuario por
+	 * teclado
+	 * @param clientes HashMap de clientes al que se añadira el nuevo cliente
+	 * @return añade un cliente a la coleccion si no ha ocurrido ningun problema y false si no se ha podido
+	 */
 	public static boolean newCliente(ClienteDAO clientes) {
 		
 		boolean valid=true;
@@ -78,6 +91,14 @@ public class Addmenu {
 		return clientes.addCliente(cliente);
 	}
 	
+	/**
+	 * Metodo que inserta un nuevo cliente al hashMap de clientes segun los parametros que introduzca el usuario por
+	 * teclado
+	 * @param reservas hashMap de reservas al que se añadira la nueva reserva
+	 * @param copias hashMap de copias que se necesitara para comprobar la copia que se va a reservas
+	 * @param clientes hashMap de clientes que se necesitara para comprobar el cliente que va a hacer la reserva
+	 * @return añade una reserva a la coleccion si no ha ocurrido ningun problema y false si no se ha podido
+	 */
 	public static boolean newReserva(ReservaDAO reservas,CopiaDAO copias, ClienteDAO clientes) {
 		
 		boolean valid=true;
@@ -165,6 +186,14 @@ public class Addmenu {
 		return reservas.addReserva(reserva);
 	}
 	
+	/**
+	 * Metodo que generara una copia de un producto segun el numero de copias que haya indicado el usuario que quiere
+	 * con una id aleatoria
+	 * @param cops numero de copias que quiere el cliente hacer
+	 * @param p el producto del que se van a hacer las copias
+	 * @param copias hashMap de copias al que se van ha añadir las copias generadas
+	 * @return devolvera la copia generada
+	 */
 	public static Copia generarCopias(int cops, Producto p,CopiaDAO copias) {
 		int cont=0;
 		String id="";

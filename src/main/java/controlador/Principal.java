@@ -22,7 +22,7 @@ public class Principal implements IControlador {
 	 */
 	public void run() {
 		
-		Archivo.loadProductos(productos);
+		Archivo.load(productos);
 		Archivo.load(clientes);
 		Archivo.load(copias);
 		Archivo.load(reservas);

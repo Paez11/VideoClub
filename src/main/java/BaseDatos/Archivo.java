@@ -12,11 +12,10 @@ import DAO.*;
 public class Archivo {
 
 	/**
-	 * Según el enum que se le de como parámetro, guarda los datos en un archivo xml
-	 * 
-	 * @param producto Esto será un Enum
+	 * Metodo que guardara la coleccion que reciba en un archivo xml para su posterior recarga en el programa de nuevo
+	 * @param dao clase padre de las clases dao en la que se instaciara la coleccion que reciba
 	 */
-	public static void save(ProductoDAO producto) {
+	public static void save(DAO dao) {
 		JAXBContext archivo;
 		String productoXML = "Productos.xml";
 		try {
@@ -24,61 +23,52 @@ public class Archivo {
 			Marshaller m = archivo.createMarshaller();
 			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-			m.marshal(producto, new File(productoXML));
+			m.marshal(dao, new File(productoXML));
 		} catch (JAXBException ex) {
 			ex.printStackTrace();
 		}
 	}
 	
-	public static void save(ReservaDAO reservas) {
-		JAXBContext archivo;
-		String ReservaXML = "Reservas.xml";
-		try {
-			archivo = JAXBContext.newInstance(ReservaDAO.class);
-			Marshaller m = archivo.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
-			m.marshal(reservas, new File(ReservaXML));
-		} catch (JAXBException ex) {
-			ex.printStackTrace();
-		}
-	}
-	
-	public static void save(ClienteDAO clientes) {
-		JAXBContext archivo;
-		String clienteXML="Clientes.xml";
-		try {
-			archivo=JAXBContext.newInstance(ClienteDAO.class);
-			Marshaller m=archivo.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			
-			m.marshal(clientes, new File(clienteXML));
-		} catch (JAXBException ex) {
-			ex.printStackTrace();
-		}
-	}	
-	
-	public static void save(CopiaDAO copias) {
+	/**
+	 * Metodo que guardara la coleccion que reciba en un archivo xml para su posterior recarga en el programa de nuevo
+	 * @param dao clase padre de las clases dao en la que se instaciara la coleccion que reciba
+	 */
+	public static void save(DAOMap dao) {
 		JAXBContext archivo;
 		String copiaXML="Copias.xml";
+		String clienteXML="Clientes.xml";
+		String ReservaXML = "Reservas.xml";
 		try {
-			archivo=JAXBContext.newInstance(CopiaDAO.class);
-			Marshaller m=archivo.createMarshaller();
-			m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			
-			m.marshal(copias, new File(copiaXML));
+			if(dao instanceof CopiaDAO) {
+				archivo=JAXBContext.newInstance(CopiaDAO.class);
+				Marshaller m=archivo.createMarshaller();
+				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				m.marshal(dao, new File(copiaXML));
+			}else if(dao instanceof ClienteDAO) {
+				archivo=JAXBContext.newInstance(ClienteDAO.class);
+				Marshaller m=archivo.createMarshaller();
+				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+				
+				m.marshal(dao, new File(clienteXML));
+			}else if(dao instanceof ReservaDAO) {
+				archivo = JAXBContext.newInstance(ReservaDAO.class);
+				Marshaller m = archivo.createMarshaller();
+				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+				m.marshal(dao, new File(ReservaXML));
+			}
+
 		} catch (JAXBException ex) {
 			ex.printStackTrace();
 		}
-	}	
+	}
 
 	/**
-	 * Según el enum que se le de como parámetro, carga los datos desde un archivo
-	 * xml
-	 * 
-	 * @param producto Esto será un Enum
+	 * Metodo que cargara el archivo xml con los datos de la coleccion guardados segun la coleccion que reciba
+	 * @param dao clase padre de las clases dao en la que se instaciara la coleccion que reciba
 	 */
-	public static void loadProductos(DAO dao) {
+	public static void load(DAO dao) {
 		JAXBContext archivo=null;
 		String productoXML = "";
 		try {
@@ -99,6 +89,10 @@ public class Archivo {
 		}
 	}
 	
+	/**
+	 * Metodo que cargara el archivo xml con los datos de la coleccion guardados segun la coleccion que reciba
+	 * @param dao clase padre de las clases dao en la que se instaciara la coleccion que reciba
+	 */
 	public static void load(DAOMap dao) {
 		JAXBContext archivo=null;
 		String XML = "";

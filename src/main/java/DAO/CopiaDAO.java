@@ -54,7 +54,7 @@ public class CopiaDAO extends DAOMap{
 		return result;
 	}
 	/**
-	 * Metodo que elimina un cliente
+	 * Metodo que elimina una copia
 	 * @param key de la copia
 	 * @return la copia que se ha eliminado
 	 */
@@ -81,6 +81,9 @@ public class CopiaDAO extends DAOMap{
 	}
 	
 	@Override
+	/**
+	 * Genera cadena de texto para el método CopiaDAO
+	 */
 	public String toString() {
 		
 		String s="";

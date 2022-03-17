@@ -10,6 +10,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import controlador.Lista;
 import modelo.Reserva;
@@ -19,6 +20,7 @@ import modelo.estado;
 @XmlRootElement(name="Reservas")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ReservaDAO {
+	@XmlTransient
 	private static ReservaDAO _instance;
 	private HashMap<String, Reserva> alm;
 	

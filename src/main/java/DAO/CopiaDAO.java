@@ -10,6 +10,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import controlador.Lista;
 import modelo.Copia;
@@ -18,6 +19,7 @@ import modelo.Copia;
 @XmlRootElement(name="CopiaDAO")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CopiaDAO {
+	@XmlTransient
 	private static CopiaDAO _instance;
 	private HashMap <String,Copia> CopiaDAO;
 

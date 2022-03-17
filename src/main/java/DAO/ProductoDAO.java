@@ -10,6 +10,7 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import controlador.Lista;
 import modelo.Producto;
@@ -17,6 +18,7 @@ import modelo.Producto;
 @XmlRootElement(name="ProductoDAO")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProductoDAO {
+	@XmlTransient
 	private static ProductoDAO _instance;
 	private ArrayList<Producto> listaProductos;
 	

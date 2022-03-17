@@ -46,7 +46,7 @@ public class CopiaDAO {
 		return result;
 	}
 	/**
-	 * Metodo que elimina un cliente
+	 * Metodo que elimina una copia
 	 * @param key de la copia
 	 * @return la copia que se ha eliminado
 	 */
@@ -72,6 +72,9 @@ public class CopiaDAO {
 	}
 	
 	@Override
+	/**
+	 * Genera cadena de texto para el método CopiaDAO
+	 */
 	public String toString() {
 		
 		String s="";
@@ -80,7 +83,6 @@ public class CopiaDAO {
 		}
 		return s;
 	}
-	
 	public void saveFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Copias) {
@@ -96,7 +98,6 @@ public class CopiaDAO {
 			}
 		}
 	}	
-	
 	public void loadFile(Lista e) {
 		JAXBContext archivo;
 		if(e==Lista.Copias) {

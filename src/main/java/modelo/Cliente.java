@@ -17,13 +17,10 @@ public class Cliente implements ICliente, Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@XmlAttribute(name="Nombre")
 	private String nombre;
 	@XmlAttribute(name="DNI")
 	private String dni;
-	@XmlAttribute(name="Edad")
 	private int edad;
-	@XmlAttribute(name="VIP")
 	private boolean vip;
 	
 	public Cliente() {

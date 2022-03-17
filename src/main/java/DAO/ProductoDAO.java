@@ -2,6 +2,7 @@ package DAO;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -10,14 +11,17 @@ import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import controlador.Lista;
 import modelo.Producto;
 
 @XmlRootElement(name="ProductoDAO")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ProductoDAO {
+public class ProductoDAO extends DAO<Producto>{
+	@XmlTransient
 	private static ProductoDAO _instance;
+	
 	private ArrayList<Producto> listaProductos;
 	
 	/**
@@ -37,7 +41,15 @@ public class ProductoDAO {
 		}
 		return _instance;
 	}
-
+	@Override
+	public List<Producto> getList(){
+		return this.listaProductos;
+	}
+	@Override
+	public void setList(List n) {
+		this.listaProductos.clear();
+		this.listaProductos.addAll(n);
+	}
 	/**
 	 * Añade un producto a listaProductos.
 	 * @param p Producto que se quiere añadir.
@@ -149,35 +161,4 @@ public class ProductoDAO {
 		return s;
 	}
 	
-	public void saveFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Productos) {
-			String productoXML="Producto.xml";
-			try {
-				archivo=JAXBContext.newInstance(ProductoDAO.class);
-				Marshaller m=archivo.createMarshaller();
-				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-				
-				m.marshal(_instance, new File(productoXML));
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}	
-	
-	public void loadFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Productos) {
-			String productoXML="Producto.xml";
-			try {
-				archivo = JAXBContext.newInstance(ProductoDAO.class);
-			    Unmarshaller um = archivo.createUnmarshaller();
-			     
-			    ProductoDAO newProductoDAO = (ProductoDAO) um.unmarshal( new File(productoXML) );
-			    listaProductos=newProductoDAO.listaProductos;
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}
 }

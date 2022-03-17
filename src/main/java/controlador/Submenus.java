@@ -1,5 +1,6 @@
 package controlador;
 
+import BaseDatos.Archivo;
 import DAO.*;
 import modelo.*;
 import utils.lee;
@@ -26,12 +27,14 @@ public class Submenus {
 			switch(opcion) {
 				case 1:
 					Addmenu.newProducto(productos, copias);
+					Archivo.save(productos);
 					break;
 				case 2:
 					lee.Print("Introduzca el nombre del producto a eliminar");
 					s=lee.String();
 					if(productos.searchProducto(s)!=null) {
 						productos.deleteProducto(s);
+						Archivo.save(productos);
 						lee.Print("producto "+s+" eliminado");
 					}else {
 						lee.Print("No existe el producto: "+s);
@@ -42,6 +45,7 @@ public class Submenus {
 					s=lee.String();
 					if(productos.searchProducto(s)!=null) {
 						Editmenu.Producto(s, productos);
+						Archivo.save(productos);
 					}else {
 						lee.Print("No existe el producto: "+s);
 					}
@@ -90,6 +94,7 @@ public class Submenus {
 			switch(opcion) {
 				case 1:
 					Addmenu.newCliente(clientes);
+					Archivo.save(clientes);
 					break;
 				case 2:
 					lee.Print("Introduzca el dni del cliente a eliminar");
@@ -100,6 +105,7 @@ public class Submenus {
 							}catch(Exception e) {
 								lee.Print("No se ha podido elimar al cliente o no existe");
 							}
+						Archivo.save(clientes);
 						lee.Print("Cliente "+s+" eliminado");
 					}else {
 						lee.Print("No se ha podido eliminar al cliente "+s+" o no existe");
@@ -111,6 +117,7 @@ public class Submenus {
 					s=lee.String();
 					if(clientes.searchCliente(s)!=null) {
 						Editmenu.Cliente(s, clientes);
+						Archivo.save(clientes);
 					}else {
 						lee.Print("No se ha encontrado al cliente "+s);
 					}
@@ -159,12 +166,14 @@ public class Submenus {
 			switch(opcion) {
 				case 1:
 					Addmenu.newReserva(reservas,copias,clientes);
+					Archivo.save(reservas);
 					break;
 				case 2:
 					lee.Print("Introduzca el id de la reserva a eliminar");
 					s=lee.String();
 					if(reservas.searchReserva(s)!=null) {
 						reservas.deleteReserva(s);
+						Archivo.save(reservas);
 						lee.Print("Reserva "+s+" eliminada");
 					}else {
 						lee.Print("No se ha podido eliminar la reserva "+s+" o no existe");
@@ -175,6 +184,7 @@ public class Submenus {
 					s=lee.String();
 					if(reservas.searchReserva(s)!=null) {
 						Editmenu.Reservas(s, reservas);
+						Archivo.save(reservas);
 					}else {
 						lee.Print("No se ha podido encontrar la reserva "+s+" o no existe");
 					}

@@ -1,6 +1,7 @@
 package controlador;
 import java.time.LocalDate;
 
+import BaseDatos.Archivo;
 import DAO.*;
 import modelo.*;
 import utils.lee;
@@ -38,6 +39,7 @@ public class Addmenu {
 			Producto p=null;
 			p=new Producto(id,des,precio,cops);
 			generarCopias(cops,p,copias);
+			Archivo.save(copias);
 			if(p!=null) {
 				lee.Print("Producto añadido correctamente");
 			}
@@ -110,6 +112,10 @@ public class Addmenu {
 			valid=true;
 			if(copias.searchCopia(id)==null) {
 				lee.Print("No existe un producto con esa id");
+				valid=false;
+			}
+			if(reservas.searchReserva(id)!=null) {
+				lee.Print("Ya hay una reserva con esa copia");
 				valid=false;
 			}
 			if(id.equals("salir")) {

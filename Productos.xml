@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ProductoDAO>
+    <list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="producto" Nombre="prueba">
+        <Descripcion>esto es una prueba</Descripcion>
+        <Precio>1.1</Precio>
+        <nCopias>2</nCopias>
+    </list>
+    <listaProductos Nombre="prueba">
+        <Descripcion>esto es una prueba</Descripcion>
+        <Precio>1.1</Precio>
+        <nCopias>2</nCopias>
+    </listaProductos>
+</ProductoDAO>

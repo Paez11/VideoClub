@@ -6,8 +6,10 @@ import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAnyAttribute;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import interfaces.IReserva;
 @XmlRootElement(name="Reserva")
@@ -18,18 +20,19 @@ public class Reserva implements IReserva, Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	@XmlAttribute(name="fechaCreacion")
+	@XmlTransient
 	private LocalDate fechaCreacion;
-	@XmlAttribute(name="fechaPrevista")
+
 	private String fechaPrevista;
-	@XmlAttribute(name="fechaReal")
+
 	private String fechaReal;
-	@XmlAttribute(name="estado")
+
 	private estado estado;
 	@XmlAttribute(name="key", required=true)
 	private String key;
+
 	private String producto;
+
 	private String dni;
 	
 	
@@ -131,8 +134,6 @@ public class Reserva implements IReserva, Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
 		result = prime * result + ((key == null) ? 0 : key.hashCode());
 		result = prime * result + ((producto == null) ? 0 : producto.hashCode());
 		return result;
@@ -147,13 +148,6 @@ public class Reserva implements IReserva, Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Reserva other = (Reserva) obj;
-		if (dni == null) {
-			if (other.dni != null)
-				return false;
-		} else if (!dni.equals(other.dni))
-			return false;
-		if (estado != other.estado)
-			return false;
 		if (key == null) {
 			if (other.key != null)
 				return false;

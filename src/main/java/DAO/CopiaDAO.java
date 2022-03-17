@@ -17,7 +17,7 @@ import modelo.Copia;
 
 @XmlRootElement(name="CopiaDAO")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class CopiaDAO {
+public class CopiaDAO extends DAOMap{
 	private static CopiaDAO _instance;
 	private HashMap <String,Copia> CopiaDAO;
 
@@ -31,6 +31,20 @@ public class CopiaDAO {
 		}
 		return _instance;
 	}
+	
+	@Override
+	public HashMap getHashMap() {
+		
+		return this.CopiaDAO;
+	}
+
+	@Override
+	public void setHashMap(HashMap h) {
+		this.CopiaDAO.clear();
+		this.CopiaDAO.putAll(h);
+		
+	}
+	
 	
 	/**
 	 * metodo que añade una copia
@@ -79,37 +93,5 @@ public class CopiaDAO {
 			s+="\n"+ CopiaDAO.get(i)+"\n";
 		}
 		return s;
-	}
-	
-	public void saveFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Copias) {
-			String copiaXML="Copia.xml";
-			try {
-				archivo=JAXBContext.newInstance(CopiaDAO.class);
-				Marshaller m=archivo.createMarshaller();
-				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-				
-				m.marshal(_instance, new File(copiaXML));
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}	
-	
-	public void loadFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Copias) {
-			String copiaXML="Copia.xml";
-			try {
-				archivo = JAXBContext.newInstance(ProductoDAO.class);
-			    Unmarshaller um = archivo.createUnmarshaller();
-			     
-			    CopiaDAO newProductoDAO = (CopiaDAO) um.unmarshal( new File(copiaXML) );
-			    CopiaDAO=newProductoDAO.CopiaDAO;
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
 	}
 }

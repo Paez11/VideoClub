@@ -2,6 +2,9 @@ package vistas;
 
 public class menu{
 
+	/**
+	 * Método que muestra por pantalla el menu principal
+	 */
 	public static void showMenuPrincipal() {
 		System.out.println(" __     __  _       _                   ____   _           _     \r\n"
 				+ " \\ \\   / / (_)   __| |   ___    ___    / ___| | |  _   _  | |__  \r\n"
@@ -16,6 +19,9 @@ public class menu{
 		
 	}
 
+	/**
+	 * Método que muestra por pantalla el menu Productos
+	 */
 	public static void showMenuProductos() {
 
 		System.out.println("  ___                  _               _              \r\n"
@@ -32,6 +38,9 @@ public class menu{
 		System.out.println("0. Volver");
 	}
 
+	/**
+	 * Método que muestra por pantalla el menu Clientes
+	 */
 	public static void showMenuClientes() {
 
 		System.out.println("   ___   _   _                _              \r\n"
@@ -47,6 +56,9 @@ public class menu{
 		System.out.println("0. Volver");
 	}
 
+	/**
+	 * Método que muestra por pantalla el menu Reservas
+	 */
 	public static void showMenuReservas() {
 
 		System.out.println("  ___                                          \r\n"
@@ -61,6 +73,9 @@ public class menu{
 		System.out.println("0. Volver");
 	}
 	
+	/**
+	 * Método que muestra por pantalla el menu para editar Productos
+	 */
 	public static void menuEditarProducto() {
 		 System.out.println("           _   _   _                                          _               _         \r\n"
 		 		+ "  ___   __| | (_) | |_   __ _   _ _     _ __   _ _   ___   __| |  _  _   __  | |_   ___ \r\n"
@@ -73,6 +88,9 @@ public class menu{
 		 System.out.println("0. Volver");
 	}
 	
+	/**
+	 * Método que muestra por pantalla el menu para editar Clientes
+	 */
 	public static void menuEditarCliente() {
 		System.out.println("           _   _   _                         _   _                _         \r\n"
 				+ "  ___   __| | (_) | |_   __ _   _ _     __  | | (_)  ___   _ _   | |_   ___ \r\n"
@@ -85,6 +103,9 @@ public class menu{
 		System.out.println("0. Volver");
 	}
 	
+	/**
+	 * Método que muestra por pantalla el menu para editar Reservas
+	 */
 	public static void menuEditarReserva() {
 		System.out.println("           _   _   _                                                            \r\n"
 				+ "  ___   __| | (_) | |_   __ _   _ _     _ _   ___   ___  ___   _ _  __ __  __ _ \r\n"
@@ -97,6 +118,9 @@ public class menu{
 		System.out.println("0. Volver");
 	}
 	
+	/**
+	 * Método que muestra las opciones del estado de una reserva
+	 */
 	public static void estados() {
 		System.out.println("1. bien");
 		System.out.println("2. roto");

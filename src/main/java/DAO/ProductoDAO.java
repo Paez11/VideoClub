@@ -1,19 +1,13 @@
 package DAO;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import controlador.Lista;
 import modelo.Producto;
 
 @XmlRootElement(name="ProductoDAO")
@@ -81,24 +75,6 @@ public class ProductoDAO extends DAO<Producto>{
 	}
 	
 	/**
-	 * Edita el nombre de un producto.
-	 * @param nombre Nombre del producto.
-	 * @return Devuelve true si el producto se ha editado y false si no lo ha hecho.
-	 */
-	public boolean editNombre(String nombre) {
-		boolean result=false;
-		Producto p = new Producto();
-		for(int i=0; i<listaProductos.size(); i++) {
-			if(p!=null) {
-				p=listaProductos.get(i);
-				p.setNombre(nombre);
-				result= true;
-			}
-		}
-		return result;
-	}
-	
-	/**
 	 * Edita la descripcion de un producto.
 	 * @param descripcion Descripcion del producto.
 	 * @return Devuelve true si el producto se ha editado y false si no lo ha hecho.
@@ -128,6 +104,37 @@ public class ProductoDAO extends DAO<Producto>{
 			if(p!=null) {
 				p=listaProductos.get(i);
 				p.setPrecio(precio);
+				result= true;
+			}
+		}	
+		return result;
+	}
+	
+	/**
+	 * Edita el nombre de un producto.
+	 * @param nombre Nombre del producto.
+	 * @return Devuelve true si el producto se ha editado y false si no lo ha hecho.
+	 */
+	public boolean editNombre(String nombre) {
+		boolean result=false;
+		Producto p = new Producto();
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(p!=null) {
+				p=listaProductos.get(i);
+				p.setNombre(nombre);
+				result= true;
+			}
+		}
+		return result;
+	}
+
+	public boolean editNCopias(int copias) {
+		boolean result=false;
+		Producto p = new Producto();
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(p!=null) {
+				p=listaProductos.get(i);
+				p.setnCopias(p.getnCopias()+copias);
 				result= true;
 			}
 		}	

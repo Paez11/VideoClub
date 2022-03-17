@@ -70,6 +70,8 @@ public class menu{
 		 System.out.println("1. Nombre");
 		 System.out.println("2. Descripcion");
 		 System.out.println("3. Precio");
+		 System.out.println("4. añadir copias");
+		 System.out.println("5. eliminar copia");
 		 System.out.println("0. Volver");
 	}
 	

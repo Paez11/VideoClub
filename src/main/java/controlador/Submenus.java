@@ -44,8 +44,9 @@ public class Submenus {
 					lee.Print("Introduzca el nombre del producto que quiera modificar");
 					s=lee.String();
 					if(productos.searchProducto(s)!=null) {
-						Editmenu.Producto(s, productos);
+						Editmenu.Producto(s, productos,copias);
 						Archivo.save(productos);
+						Archivo.save(copias);
 					}else {
 						lee.Print("No existe el producto: "+s);
 					}

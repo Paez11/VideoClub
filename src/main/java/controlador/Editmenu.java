@@ -1,8 +1,10 @@
 package controlador;
 
 import DAO.ClienteDAO;
+import DAO.CopiaDAO;
 import DAO.ProductoDAO;
 import DAO.ReservaDAO;
+import modelo.Copia;
 import modelo.estado;
 import utils.lee;
 import vistas.menu;
@@ -15,7 +17,7 @@ public class Editmenu {
 	 * @param s recibira una cadena que se correspondera con el nombre del producto que se quiera editar
 	 * @param productos arrayList de productos
 	 */
-	public static void Producto(String s, ProductoDAO productos) {
+	public static void Producto(String s, ProductoDAO productos, CopiaDAO copias) {
 		int opcion=-1;
 		
 		do {
@@ -38,6 +40,20 @@ public class Editmenu {
 					lee.Print("Introduzca un nuevo precio");
 					double precio=lee.Double();
 					productos.editPrecio(precio);
+					break;
+				case 4:
+					lee.Print("Introduzca el numero de copias que desee agregar");
+					int nCopias=lee.Entero();
+					productos.editNCopias(nCopias);
+					Addmenu.newCopia(copias, nCopias, productos.searchProducto(s));
+					break;
+				case 5:
+					lee.Print("Introduzca el id de la copia que quiere eliminar");
+					String id=lee.String();
+					copias.deleteCopia(id);
+					productos.searchProducto(s).setnCopias(productos.searchProducto(s).getnCopias()-1);
+					
+					lee.Print("Copia eliminada");
 					break;
 				case 0:
 					break;

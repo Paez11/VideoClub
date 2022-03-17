@@ -1,6 +1,7 @@
 package controlador;
 import java.time.LocalDate;
 
+import BaseDatos.Archivo;
 import DAO.*;
 import modelo.*;
 import utils.lee;
@@ -38,12 +39,31 @@ public class Addmenu {
 			Producto p=null;
 			p=new Producto(id,des,precio,cops);
 			generarCopias(cops,p,copias);
+			Archivo.save(copias);
 			if(p!=null) {
 				lee.Print("Producto añadido correctamente");
 			}
 			
 			return productos.addProducto(p);
 		}
+	
+	/**
+	 * Funcion que crea un numero de copias segun reciba de un producto y las añade a la coleccion de copias
+	 * @param copias coleccion que contiene el objeto copia
+	 * @param cops numero de copias que se van a crear
+	 * @param p producto del que se crearan las copias
+	 * @return
+	 */
+	public static boolean newCopia(CopiaDAO copias, int cops,Producto p) {
+		boolean result=false;
+		if(p!=null) {
+			generarCopias(cops,p,copias);
+			result=true;
+		}else {
+			lee.Print("No se han podido crear las nuevas copias");
+		}
+		return result;
+	}
 	
 	/**
 	 * Metodo que inserta un nuevo cliente al hashMap de clientes segun los parametros que introduzca el usuario por
@@ -112,6 +132,10 @@ public class Addmenu {
 				lee.Print("No existe un producto con esa id");
 				valid=false;
 			}
+			if(reservas.searchReserva(id)!=null) {
+				lee.Print("Ya hay una reserva con esa copia");
+				valid=false;
+			}
 			if(id.equals("salir")) {
 				valid=true;
 			}
@@ -178,7 +202,6 @@ public class Addmenu {
 		clave=reserva.generarID();
 		reserva.setKey(clave);
 		lee.Print("id de la reserva --> "+clave);
-		
 		if(reserva!=null) {
 			lee.Print("Reserva añadido correctamente");
 		}
@@ -199,9 +222,9 @@ public class Addmenu {
 		String id="";
 		Copia c =new Copia();
 		while(cont<cops){
+			c = new Copia(p.getNombre(),p.getDescripcion(),p.getPrecio(), p.getnCopias(), c.getKey());
 			id=c.generarID();
 			c.setKey(id);
-			c = new Copia(p.getNombre(),p.getDescripcion(),p.getPrecio(), p.getnCopias(), c.getKey());
 			copias.addCopia(c);
 			cont++;
 		}

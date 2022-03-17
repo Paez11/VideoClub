@@ -1,24 +1,18 @@
 package DAO;
 
-import java.io.File;
 import java.util.HashMap;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import controlador.Lista;
 import modelo.Reserva;
 import modelo.estado;
 
 
 @XmlRootElement(name="Reservas")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class ReservaDAO {
+public class ReservaDAO extends DAOMap{
 	private static ReservaDAO _instance;
 	private HashMap<String, Reserva> alm;
 	
@@ -31,6 +25,17 @@ public class ReservaDAO {
 			_instance=new ReservaDAO();
 		}
 		return _instance;
+	}
+	
+	@Override
+	public HashMap getHashMap() {
+		return this.alm;
+	}
+
+	@Override
+	public void setHashMap(HashMap h) {
+		this.alm.clear();
+		this.alm.putAll(h);
 	}
 	
 	public boolean addReserva(Reserva r) {
@@ -97,39 +102,6 @@ public class ReservaDAO {
 			s+=alm.get(i)+"\n"+"----------------------------"+"\n";
 		}
 		return s;
-	}
-	
-	public void saveFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Reservas) {
-			String reservaXML="Reserva.xml";
-			try {
-				archivo=JAXBContext.newInstance(ReservaDAO.class);
-				Marshaller m=archivo.createMarshaller();
-				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-				
-				//alm hay que cambiarlo cuando se implemente el patrón singleton
-				m.marshal(alm, new File(reservaXML));
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}	
-	
-	public void loadFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Reservas) {
-			String reservaXML="Reserva.xml";
-			try {
-				archivo = JAXBContext.newInstance(ReservaDAO.class);
-			    Unmarshaller um = archivo.createUnmarshaller();
-			     
-			    ReservaDAO newReservaDAO = (ReservaDAO) um.unmarshal( new File(reservaXML) );
-			    alm=newReservaDAO.alm;
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
 	}
 	
 }

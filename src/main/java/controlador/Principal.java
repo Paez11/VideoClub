@@ -1,5 +1,6 @@
 package controlador;
 
+import BaseDatos.Archivo;
 import DAO.ClienteDAO;
 import DAO.CopiaDAO;
 import DAO.ProductoDAO;
@@ -20,6 +21,12 @@ public class Principal implements IControlador {
 	 * switch del menu principal hasta que el usuario decida salir
 	 */
 	public void run() {
+		
+		Archivo.loadProductos(productos);
+		Archivo.load(clientes);
+		Archivo.load(copias);
+		Archivo.load(reservas);
+		
 		int opcion=-1;
 		do {
 			menu.showMenuPrincipal();

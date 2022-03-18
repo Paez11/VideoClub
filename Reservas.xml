@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Reservas>
-    <hashMap/>
-    <alm/>
+    <hashMap>
+        <entry>
+            <key xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">5c0b10c3-4350-48d4-b14b-7b7d343e5148</key>
+            <value xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="reserva" key="5c0b10c3-4350-48d4-b14b-7b7d343e5148">
+                <fechaPrevista>2022-03-20</fechaPrevista>
+                <fechaReal>Sin entrega</fechaReal>
+                <estado>BIEN</estado>
+                <producto>d554e0a6-e497-4e30-ab97-cdda53c86324</producto>
+                <dni>1a</dni>
+            </value>
+        </entry>
+    </hashMap>
+    <alm>
+        <entry>
+            <key>5c0b10c3-4350-48d4-b14b-7b7d343e5148</key>
+            <value key="5c0b10c3-4350-48d4-b14b-7b7d343e5148">
+                <fechaPrevista>2022-03-20</fechaPrevista>
+                <fechaReal>Sin entrega</fechaReal>
+                <estado>BIEN</estado>
+                <producto>d554e0a6-e497-4e30-ab97-cdda53c86324</producto>
+                <dni>1a</dni>
+            </value>
+        </entry>
+    </alm>
 </Reservas>

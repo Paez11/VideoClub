@@ -1,6 +1,8 @@
 package DAO;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -132,6 +134,26 @@ public class ReservaDAO extends DAOMap{
 		}
 		return r;
 	}
+	
+	/**
+	 * Busca dentro de la coleccion de reservas si existe el elemento que identifica la copia para devolver el objeto 
+	 * que la contenga
+	 * @param id de la copia que queremos comprobar si existe en la reserva
+	 * @return devuelve la reserva si la a encontrado o null si ninguna de ellas contiene ese producto con la esa id en
+	 * su atributo de producto o si la reserva a finalizado
+	 */
+	public Reserva searchCopiaReserva(String id) {
+		
+		Reserva r=null;
+		
+		for(Reserva c:alm.values()) {
+			if(c.getProducto().equals(id) && c.getFechaReal().equals("Sin entrega")) {
+				r=c;
+			}
+		}
+		return r;
+	}
+	
 	
 	/**
 	 * Método toString sobreescrito para mostrar de forma ordenada el contenido del HashMap

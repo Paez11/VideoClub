@@ -34,6 +34,7 @@ public class Submenus {
 					s=lee.String();
 					if(productos.searchProducto(s)!=null) {
 						productos.deleteProducto(s);
+						//copias.deleteAllCopia(s);
 						Archivo.save(productos);
 						lee.Print("producto "+s+" eliminado");
 					}else {

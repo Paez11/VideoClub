@@ -1,6 +1,7 @@
 package DAO;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -78,6 +79,20 @@ public class CopiaDAO extends DAOMap{
 			c=this.CopiaDAO.get(key);
 		}
 		return c;
+	}
+	
+	public boolean deleteAllCopia(String nombre) {
+		
+		boolean result=false;
+				
+		for(Copia i: CopiaDAO.values()) {
+			if(i.getNombre().equals(nombre)) {
+				CopiaDAO.remove(i.getKey());
+				result=true;
+			}
+		}
+		
+		return result;
 	}
 	
 	@Override

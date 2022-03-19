@@ -131,8 +131,7 @@ public class Addmenu {
 			if(copias.searchCopia(id)==null) {
 				lee.Print("No existe un producto con esa id");
 				valid=false;
-			}
-			if(reservas.searchReserva(id)!=null) {
+			}else if(reservas.searchCopiaReserva(id)!=null) {
 				lee.Print("Ya hay una reserva con esa copia");
 				valid=false;
 			}

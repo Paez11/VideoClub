@@ -1,25 +1,25 @@
 package DAO;
 
-import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import controlador.Lista;
 import modelo.Producto;
 
 @XmlRootElement(name="ProductoDAO")
 @XmlAccessorType(XmlAccessType.FIELD)
+<<<<<<< HEAD
 public class ProductoDAO {
+=======
+public class ProductoDAO extends DAO<Producto>{
+>>>>>>> 6de4c10b95ef9e308b26f527de6ac62c69e4e5c0
 	@XmlTransient
 	private static ProductoDAO _instance;
+	
 	private ArrayList<Producto> listaProductos;
 	
 	/**
@@ -39,7 +39,15 @@ public class ProductoDAO {
 		}
 		return _instance;
 	}
-
+	@Override
+	public List<Producto> getList(){
+		return this.listaProductos;
+	}
+	@Override
+	public void setList(List n) {
+		this.listaProductos.clear();
+		this.listaProductos.addAll(n);
+	}
 	/**
 	 * Añade un producto a listaProductos.
 	 * @param p Producto que se quiere añadir.
@@ -68,24 +76,6 @@ public class ProductoDAO {
 			}
 		}
 		return p;
-	}
-	
-	/**
-	 * Edita el nombre de un producto.
-	 * @param nombre Nombre del producto.
-	 * @return Devuelve true si el producto se ha editado y false si no lo ha hecho.
-	 */
-	public boolean editNombre(String nombre) {
-		boolean result=false;
-		Producto p = new Producto();
-		for(int i=0; i<listaProductos.size(); i++) {
-			if(p!=null) {
-				p=listaProductos.get(i);
-				p.setNombre(nombre);
-				result= true;
-			}
-		}
-		return result;
 	}
 	
 	/**
@@ -125,6 +115,37 @@ public class ProductoDAO {
 	}
 	
 	/**
+	 * Edita el nombre de un producto.
+	 * @param nombre Nombre del producto.
+	 * @return Devuelve true si el producto se ha editado y false si no lo ha hecho.
+	 */
+	public boolean editNombre(String nombre) {
+		boolean result=false;
+		Producto p = new Producto();
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(p!=null) {
+				p=listaProductos.get(i);
+				p.setNombre(nombre);
+				result= true;
+			}
+		}
+		return result;
+	}
+
+	public boolean editNCopias(int copias) {
+		boolean result=false;
+		Producto p = new Producto();
+		for(int i=0; i<listaProductos.size(); i++) {
+			if(p!=null) {
+				p=listaProductos.get(i);
+				p.setnCopias(p.getnCopias()+copias);
+				result= true;
+			}
+		}	
+		return result;
+	}
+	
+	/**
 	 * Busca un producto por su nombre.
 	 * @param name Nombre del producto.
 	 * @return Devuelve el producto buscado.
@@ -151,35 +172,4 @@ public class ProductoDAO {
 		return s;
 	}
 	
-	public void saveFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Productos) {
-			String productoXML="Producto.xml";
-			try {
-				archivo=JAXBContext.newInstance(ProductoDAO.class);
-				Marshaller m=archivo.createMarshaller();
-				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-				
-				m.marshal(_instance, new File(productoXML));
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}	
-	
-	public void loadFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Productos) {
-			String productoXML="Producto.xml";
-			try {
-				archivo = JAXBContext.newInstance(ProductoDAO.class);
-			    Unmarshaller um = archivo.createUnmarshaller();
-			     
-			    ProductoDAO newProductoDAO = (ProductoDAO) um.unmarshal( new File(productoXML) );
-			    listaProductos=newProductoDAO.listaProductos;
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}
 }

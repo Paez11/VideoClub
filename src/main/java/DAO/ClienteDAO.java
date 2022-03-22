@@ -1,25 +1,23 @@
 package DAO;
 
-import java.io.File;
 import java.util.HashMap;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-import controlador.Lista;
 import modelo.Cliente;
 
 
 @XmlRootElement(name="ClienteDAO")
 @XmlAccessorType(XmlAccessType.FIELD)
+<<<<<<< HEAD
 public class ClienteDAO {
 	@XmlTransient
+=======
+public class ClienteDAO extends DAOMap{
+>>>>>>> 6de4c10b95ef9e308b26f527de6ac62c69e4e5c0
 	private static ClienteDAO _instance;
 	private HashMap<String,Cliente> clientes;
 	
@@ -33,6 +31,21 @@ public class ClienteDAO {
 		}
 		return _instance;
 	}
+	
+	@Override
+	public HashMap getHashMap() {
+		
+		return this.clientes;
+	}
+
+	@Override
+	public void setHashMap(HashMap h) {
+		this.clientes.clear();
+		this.clientes.putAll(h);
+		
+	}
+	
+	
 	/**
 	 * Añadir un cliente
 	 * @param cliente
@@ -113,38 +126,6 @@ public class ClienteDAO {
 			s+=clientes.get(i)+"\n"+"----------------------------"+"\n";
 		}
 		return s;
-	}
-
-	public void saveFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Clientes) {
-			String clienteXML="Cliente.xml";
-			try {
-				archivo=JAXBContext.newInstance(ClienteDAO.class);
-				Marshaller m=archivo.createMarshaller();
-				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-				
-				m.marshal(_instance, new File(clienteXML));
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}	
-	
-	public void loadFile(Lista e) {
-		JAXBContext archivo;
-		if(e==Lista.Clientes) {
-			String clienteXML="Cliente.xml";
-			try {
-				archivo = JAXBContext.newInstance(ClienteDAO.class);
-			    Unmarshaller um = archivo.createUnmarshaller();
-			     
-			    ClienteDAO newClienteDAO = (ClienteDAO) um.unmarshal( new File(clienteXML) );
-			    clientes=newClienteDAO.clientes;
-			} catch (JAXBException ex) {
-				ex.printStackTrace();
-			}
-		}
 	}
 	
 }

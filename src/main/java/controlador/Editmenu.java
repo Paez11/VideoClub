@@ -1,16 +1,23 @@
 package controlador;
 
 import DAO.ClienteDAO;
+import DAO.CopiaDAO;
 import DAO.ProductoDAO;
 import DAO.ReservaDAO;
+import modelo.Copia;
 import modelo.estado;
 import utils.lee;
 import vistas.menu;
 
 public class Editmenu {
 	
-	
-	public static void Producto(String s, ProductoDAO productos) {
+	/**
+	 * Metodo que contiene un switch con los casos necesarios para editar cada atributo de uno de los elementos de la
+	 * coleccion productos
+	 * @param s recibira una cadena que se correspondera con el nombre del producto que se quiera editar
+	 * @param productos arrayList de productos
+	 */
+	public static void Producto(String s, ProductoDAO productos, CopiaDAO copias) {
 		int opcion=-1;
 		
 		do {
@@ -34,6 +41,20 @@ public class Editmenu {
 					double precio=lee.Double();
 					productos.editPrecio(precio);
 					break;
+				case 4:
+					lee.Print("Introduzca el numero de copias que desee agregar");
+					int nCopias=lee.Entero();
+					productos.editNCopias(nCopias);
+					Addmenu.newCopia(copias, nCopias, productos.searchProducto(s));
+					break;
+				case 5:
+					lee.Print("Introduzca el id de la copia que quiere eliminar");
+					String id=lee.String();
+					copias.deleteCopia(id);
+					productos.searchProducto(s).setnCopias(productos.searchProducto(s).getnCopias()-1);
+					
+					lee.Print("Copia eliminada");
+					break;
 				case 0:
 					break;
 					default:
@@ -43,6 +64,12 @@ public class Editmenu {
 		}while(opcion!=0);
 	}
 	
+	/**
+	 * Metodo que contiene un switch con los casos necesarios para editar cada atributo de uno de los elementos de la
+	 * coleccion clientes
+	 * @param s recibira una cadena que se correspondera con el dni del cliente  que se quiera editar
+	 * @param clientes hashMap de clientes
+	 */
 	public static void Cliente(String s, ClienteDAO clientes) {
 		int opcion=-1;
 		
@@ -76,6 +103,12 @@ public class Editmenu {
 		}while(opcion!=0);
 	}
 	
+	/**
+	 * Metodo que contiene un switch con los casos necesarios para editar cada atributo de uno de los elementos de la
+	 * coleccion reservas
+	 * @param s recibira una cadena que se correspondera al id de la reserva que se quiera editar
+	 * @param reservas hashMap de reservas
+	 */
 	public static void Reservas(String s, ReservaDAO reservas) {
 		int opcion=-1;
 		

@@ -1,6 +1,7 @@
 package controlador;
 import java.time.LocalDate;
 
+import BaseDatos.Archivo;
 import DAO.*;
 import modelo.*;
 import utils.lee;
@@ -8,7 +9,14 @@ import vistas.menu;
 
 public class Addmenu {
 	
-	
+	/**
+	 * Metodo que inserta un nuevo producto al arraylist de productos segun los parametros que introduzca el usuario por
+	 * teclado
+	 * @param productos Arraylist de productos que contiene el producto que se quiere modificar
+	 * @param copias HashMap de copias que contiene las copias del producto que se creara segun el numero que introduzca
+	 * el usuario
+	 * @return añade un producto a la coleccion si no ha ocurrido ningun problema y false si no se ha podido
+	 */
 	public static boolean newProducto(ProductoDAO productos, CopiaDAO copias) {
 			
 			boolean valid=true;
@@ -31,6 +39,7 @@ public class Addmenu {
 			Producto p=null;
 			p=new Producto(id,des,precio,cops);
 			generarCopias(cops,p,copias);
+			Archivo.save(copias);
 			if(p!=null) {
 				lee.Print("Producto añadido correctamente");
 			}
@@ -38,6 +47,30 @@ public class Addmenu {
 			return productos.addProducto(p);
 		}
 	
+	/**
+	 * Funcion que crea un numero de copias segun reciba de un producto y las añade a la coleccion de copias
+	 * @param copias coleccion que contiene el objeto copia
+	 * @param cops numero de copias que se van a crear
+	 * @param p producto del que se crearan las copias
+	 * @return
+	 */
+	public static boolean newCopia(CopiaDAO copias, int cops,Producto p) {
+		boolean result=false;
+		if(p!=null) {
+			generarCopias(cops,p,copias);
+			result=true;
+		}else {
+			lee.Print("No se han podido crear las nuevas copias");
+		}
+		return result;
+	}
+	
+	/**
+	 * Metodo que inserta un nuevo cliente al hashMap de clientes segun los parametros que introduzca el usuario por
+	 * teclado
+	 * @param clientes HashMap de clientes al que se añadira el nuevo cliente
+	 * @return añade un cliente a la coleccion si no ha ocurrido ningun problema y false si no se ha podido
+	 */
 	public static boolean newCliente(ClienteDAO clientes) {
 		
 		boolean valid=true;
@@ -78,19 +111,38 @@ public class Addmenu {
 		return clientes.addCliente(cliente);
 	}
 	
+	/**
+	 * Metodo que inserta un nuevo cliente al hashMap de clientes segun los parametros que introduzca el usuario por
+	 * teclado
+	 * @param reservas hashMap de reservas al que se añadira la nueva reserva
+	 * @param copias hashMap de copias que se necesitara para comprobar la copia que se va a reservas
+	 * @param clientes hashMap de clientes que se necesitara para comprobar el cliente que va a hacer la reserva
+	 * @return añade una reserva a la coleccion si no ha ocurrido ningun problema y false si no se ha podido
+	 */
 	public static boolean newReserva(ReservaDAO reservas,CopiaDAO copias, ClienteDAO clientes) {
 		
 		boolean valid=true;
 		String id="";
 		do {	
 			lee.Print("Introduzca el id de la copia que quiere reservar");
+			lee.Print("Escriba (salir) para salir");
 			id=lee.String();
 			valid=true;
 			if(copias.searchCopia(id)==null) {
 				lee.Print("No existe un producto con esa id");
 				valid=false;
+			}else if(reservas.searchCopiaReserva(id)!=null) {
+				lee.Print("Ya hay una reserva con esa copia");
+				valid=false;
+			}
+			if(id.equals("salir")) {
+				valid=true;
 			}
 		}while(!valid);
+		
+		if(id.equals("salir")) {
+			return false;
+		}
 		
 		String dni="";
 		do {	
@@ -101,7 +153,14 @@ public class Addmenu {
 				lee.Print("No existe un cliente con ese dni");
 				valid=false;
 			}
+			if(dni.equals("salir")) {
+				valid=true;
+			}
 		}while(!valid);
+		
+		if(dni.equals("salir")) {
+			return false;
+		}
 		
 		LocalDate fechaCreacion = LocalDate.now();
 		lee.Print("Introduzca la fecha prevista para devolver la pelicula (año-mes-dia)");
@@ -142,7 +201,6 @@ public class Addmenu {
 		clave=reserva.generarID();
 		reserva.setKey(clave);
 		lee.Print("id de la reserva --> "+clave);
-		
 		if(reserva!=null) {
 			lee.Print("Reserva añadido correctamente");
 		}
@@ -150,14 +208,22 @@ public class Addmenu {
 		return reservas.addReserva(reserva);
 	}
 	
+	/**
+	 * Metodo que generara una copia de un producto segun el numero de copias que haya indicado el usuario que quiere
+	 * con una id aleatoria
+	 * @param cops numero de copias que quiere el cliente hacer
+	 * @param p el producto del que se van a hacer las copias
+	 * @param copias hashMap de copias al que se van ha añadir las copias generadas
+	 * @return devolvera la copia generada
+	 */
 	public static Copia generarCopias(int cops, Producto p,CopiaDAO copias) {
 		int cont=0;
 		String id="";
 		Copia c =new Copia();
 		while(cont<cops){
+			c = new Copia(p.getNombre(),p.getDescripcion(),p.getPrecio(), p.getnCopias(), c.getKey());
 			id=c.generarID();
 			c.setKey(id);
-			c = new Copia(p.getNombre(),p.getDescripcion(),p.getPrecio(), p.getnCopias(), c.getKey());
 			copias.addCopia(c);
 			cont++;
 		}

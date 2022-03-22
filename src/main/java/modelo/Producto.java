@@ -19,11 +19,8 @@ public class Producto implements IProducto, Serializable {
 	private static final long serialVersionUID = 1L;
 	@XmlAttribute(name="Nombre")
 	private String Nombre;
-	@XmlAttribute(name="Descripcion")
 	private String Descripcion;
-	@XmlAttribute(name="Precio")
 	private double Precio;
-	@XmlAttribute(name="NumeroCopias")
 	private int nCopias;
 	
 	/**
